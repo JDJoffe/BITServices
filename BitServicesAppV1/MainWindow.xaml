@@ -1,0 +1,63 @@
+﻿<Window x:Class="BitServicesDesktopApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BitServicesDesktopApp"
+        mc:Ignorable="d"
+          Title="MainWindow" Height="700" Width="1300" WindowStyle="None" AllowsTransparency="True" MinHeight="700" MaxHeight="700" MinWidth="1300" MaxWidth="1300">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="35"/>
+    </WindowChrome.WindowChrome>
+
+
+
+    <Border BorderBrush="#171717" BorderThickness="4">
+        <Grid Background="#202020">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid VerticalAlignment="Top" Grid.Row="0" Background="#171717">
+
+                <StackPanel Height="35" WindowChrome.IsHitTestVisibleInChrome="True"
+ VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button x:Name="minimizeBtn" Content="-" Width="35" Background="#282828" Foreground="#539e8a" FontSize="28" FontWeight="Bold" Margin="0,-10,1,0" BorderThickness="0" />
+                    <Button x:Name="maximizeBtn" Content="+" Width="35" Background="#282828" Foreground="#539e8a" FontSize="25" FontWeight="Bold" Margin="0,-10,1,0" BorderThickness="0"/>
+                    <Button x:Name="closeBtn" Content="X" Width="35" Background="#282828" Foreground="#ff8652" FontSize="20" FontWeight="Bold" Margin="0,-5,1,0" BorderThickness="0" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="270"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0" Background="#202020">
+                    <TextBlock Text="BIT Services" 
+                           Foreground="#ff8652" 
+                           FontSize="40" 
+                           FontWeight="Bold" 
+                           Margin="20"
+                           HorizontalAlignment="Center"
+                           />
+                </Grid>
+                <StackPanel Grid.Row="1" Grid.Column="0" Background="#202020"  >
+                    <Button x:Name="ClientManagementBtn" Foreground="#539e8a" Background="#202020" Content="Client Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6" Click="ClientManagementBtn_Click" />
+                    <Button x:Name="ContractorManagementBtn" Foreground="#539e8a" Background="#202021" Content="Contractor Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6" Click="ContractorManagementBtn_Click"/>
+                    <Button x:Name="JobManagementBtn" Foreground="#539e8a" Background="#202020" Content="Job Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6" Click="JobManagementBtn_Click" />
+                    <Button x:Name="SkillsManagementBtn" Foreground="#539e8a" Background="#202020" Content="Skills Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6"  Click="SkillsManagementBtn_Click"  />
+                    <Button x:Name="StaffManagementBtn" Foreground="#539e8a" Background="#202020" Content="Staff Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6"  Click="StaffManagementBtn_Click" />
+                  
+                    <Image Source="./Images/BIT-logos2.jpg" Height="250" Width="250" VerticalAlignment="Bottom" Margin="0,100,0,0"/>
+                </StackPanel>
+
+                <Frame x:Name="contentFrame" Grid.Column="1" Grid.RowSpan="2" Background="#282828" NavigationUIVisibility="Hidden" Margin="0,10,0,0"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
+

@@ -1,0 +1,56 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BitServicesWebApp.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIT Services</title>
+
+    <%//boostrap %>
+    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="FontAwesome/css/all.css" rel="stylesheet" />
+
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <div>
+
+
+            <nav class="navbar navbar-expand-sm navbar-dark border-bottom" style="background-color:#282828; border:50px; border-color:#ff8652">
+                <div style="background-color:#202020">
+                    <img src="../Images/BIT-logos2.jpg" width="100" height="100" />
+                </div>
+                <a class="navbar-brand" href="#">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link hover" href="HomePage.aspx" style="font-weight:bold" >Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="About.aspx" style="font-weight:bold">About Us</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Contact.aspx" style="font-weight:bold">Contact </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" style="margin-right:20px;">
+                        <li class="nav-item active">
+                            <asp:LinkButton CssClass="nav-link" ID="loginLbtn" runat="server" OnClick="loginLbtn_Click" style="font-weight:bold">
+                                    Login
+                            </asp:LinkButton>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

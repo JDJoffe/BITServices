@@ -1,0 +1,92 @@
+﻿<Page x:Class="BitServicesDesktopApp.ClientManagementView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BitServicesDesktopApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="579" d:DesignWidth="1022"
+      Title="ClientManagementView">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Client Management" FontSize="28" FontWeight="Bold" Margin="10,5,5,0" Foreground="#539e8a" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+                    <ComboBox x:Name="searchClientCmb" Width="100" Margin="10">
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                        <ComboBoxItem Content="ID"/>
+                        <ComboBoxItem Content="FirstName"/>
+                        <ComboBoxItem Content="LastName"/>
+                        <ComboBoxItem Content="Jobs"/>
+                    </ComboBox>
+                    <TextBox x:Name="searchClientTxt" Width="300" Margin="10" Background="#282828" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" Foreground="#ffffff"/>
+                    <Button x:Name="searchClientBtn" Content="SEARCH" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#282828" />
+                </StackPanel>
+            </Grid>
+            <DataGrid Grid.Row="1" x:Name="ClientsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <!-- First two columns -->
+                <Label Content="FirstName : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBox x:Name="custFirstNameTxt" Grid.Row="0" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="LastName : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBox x:Name="custLastNameTxt" Grid.Row="1" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="BirthDate : " Grid.Row="2" Grid.Column="0" Foreground="#539e8a"/>
+                <DatePicker x:Name="custDobDp" Grid.Row="2" Grid.Column="1" Margin="5" 
+             Foreground="Black" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Address : " Grid.Row="3" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBox x:Name="custAddressTxt" Grid.Row="3" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Suburb : " Grid.Row="4" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBox x:Name="custSuburbTxt" Grid.Row="4" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="PostCode : " Grid.Row="5" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBox x:Name="custPostcodeTxt" Grid.Row="5" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <!-- Last two columns -->
+                <Label Content="Phone : " Grid.Row="0" Grid.Column="2" Foreground="#539e8a"/>
+                <TextBox x:Name="custPhoneTxt" Grid.Row="0" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Email : " Grid.Row="1" Grid.Column="2" Foreground="#539e8a"/>
+                <TextBox x:Name="custEmailTxt" Grid.Row="1" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Card Number : " Grid.Row="2" Grid.Column="2" Foreground="#539e8a"/>
+                <TextBox x:Name="cardNumberTxt" Grid.Row="2" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Card Name : " Grid.Row="3" Grid.Column="2" Foreground="#539e8a"/>
+                <TextBox x:Name="cardNameTxt" Grid.Row="3" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Expiry  : " Grid.Row="4" Grid.Column="2" Foreground="#539e8a"/>
+                <TextBox x:Name="expiryTxt" Grid.Row="4" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="CVV : " Grid.Row="5" Grid.Column="2" Foreground="#539e8a"/>
+                <TextBox x:Name="cvvTxt" Grid.Row="5" Grid.Column="3" Margin="5" Background="#202020" Foreground="#ffffff"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">
+                <Button x:Name="deleteBtn" Content="DELETE" Width="100" Margin="5" Foreground="#ff8652" Background="#202020" FontSize="21" FontWeight="Bold"  BorderBrush="#282828"/>
+                <Button x:Name="updateBtn" Content="SAVE" Width="100" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold"  BorderBrush="#282828"/>
+                <Button x:Name="addBtn" Content="ADD" Width="100" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold"  BorderBrush="#282828"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
