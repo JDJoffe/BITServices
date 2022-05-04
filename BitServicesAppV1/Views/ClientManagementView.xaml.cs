@@ -25,7 +25,7 @@ namespace BitServicesDesktopApp
         public ClientManagementView()
         {
             InitializeComponent();
-            DataContext = new ClientManagementView();
+            DataContext = new ClientManagementViewModel();
 
         }
     }
