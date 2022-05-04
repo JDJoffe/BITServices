@@ -75,7 +75,11 @@
     <Compile Include="Models\Contractors.cs" />
     <Compile Include="Models\ContractorSkill.cs" />
     <Compile Include="Models\ContractorSkills.cs" />
-    <Compile Include="ViewModels\ClientManagementView.cs" />
+    <Compile Include="ViewModels\ClientManagementViewModel.cs" />
+    <Compile Include="ViewModels\ContractorManagementViewModel.cs" />
+    <Compile Include="ViewModels\CoordinatorManagementViewModel.cs" />
+    <Compile Include="ViewModels\JobManagementViewModel.cs" />
+    <Compile Include="ViewModels\SkillsManagementViewModel.cs" />
     <Compile Include="Views\JobManagementView.xaml.cs">
       <DependentUpon>JobManagementView.xaml</DependentUpon>
     </Compile>
@@ -88,8 +92,8 @@
     <Compile Include="Views\SkillsManagementView.xaml.cs">
       <DependentUpon>SkillsManagementView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StaffManagementView.xaml.cs">
-      <DependentUpon>StaffManagementView.xaml</DependentUpon>
+    <Compile Include="Views\CoordinatorManagementView.xaml.cs">
+      <DependentUpon>CoordinatorManagementView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -119,7 +123,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StaffManagementView.xaml">
+    <Page Include="Views\CoordinatorManagementView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

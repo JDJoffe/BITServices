@@ -48,13 +48,13 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <DataGrid Grid.RowSpan="2" x:Name="ClientsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <DataGrid Grid.Row="0" Grid.Column="1" x:Name="preferredSuburbsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"
-                          ItemsSource="{Binding PreferredSuburbs}" SelectedItem="{Binding SelectedSuburb}">
+                <DataGrid Grid.Row="0" Grid.Column="1" x:Name="cliLocationDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"
+                          ItemsSource="{Binding ClientLocation}" SelectedItem="{Binding SelectedLocation}">
                 </DataGrid>
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                    <TextBox Text="{Binding InstructorSuburb.Suburb}" x:Name="addSuburbTxt" Width="80" Margin="5" Foreground="#539e8a" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                    <Button x:Name="addSuburbBtn" Width="50" Content="ADD" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="18" FontWeight="Bold" Height="50" BorderBrush="#282828" Command="{Binding AddSuburbCommand}"/>
-                    <Button x:Name="removeSuburbBtn" Width="80" Content="REMOVE" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="18" FontWeight="Bold" Height="50" BorderBrush="#282828" Command="{Binding RemoveSuburbCommand}"/>
+                    <TextBox Text="{Binding Client.Location}" x:Name="addLocationTxt" Width="80" Margin="5" Foreground="#539e8a" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                    <Button x:Name="removeLocationBtn" Width="80" Content="REMOVE" Margin="5" Foreground="#ff8652" Background="#202020" FontSize="18" FontWeight="Bold" Height="50" BorderBrush="#282828" Command="{Binding RemoveLocationCommand}"/>
+                    <Button x:Name="addLocationBtn" Width="55" Content="ADD" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="18" FontWeight="Bold" Height="50" BorderBrush="#282828" Command="{Binding AddLocationCommand}"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2">
@@ -69,26 +69,28 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <!-- First two columns -->
                 <Label Content="Business Name : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="cliNameTxt" Grid.Row="0" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="Phone : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="cliPhoneTxt" Grid.Row="1" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="cliNameTxt" Grid.Row="0" Grid.Column="1"  Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Email : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBox x:Name="cliEmailTxt" Grid.Row="1" Grid.Column="1"   Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
 
-                <Label Content="Email : " Grid.Row="2" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="cliEmailTxt" Grid.Row="2" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Phone : " Grid.Row="2" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBox x:Name="cliPhoneTxt" Grid.Row="2" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
 
                 <!-- Last two columns -->
                 <Label Content="Street : " Grid.Row="0" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="cliStreetTxt" Grid.Row="0" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="cliStreetTxt" Grid.Row="0" Grid.Column="3"  Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="Suburb : " Grid.Row="1" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="cliSuburbTxt" Grid.Row="1" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="cliSuburbTxt" Grid.Row="1" Grid.Column="3"  Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="Postcode : " Grid.Row="2" Grid.Column="2" Foreground="#539e8a"/>
                 <TextBox x:Name="cliPostcodeTxt" Grid.Row="2" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="State : " Grid.Row="3" Grid.Column="2" Foreground="#539e8a"/>
-                <ComboBox  Grid.Row="3" Grid.Column="3" Width="100" Margin="-270,5,0,5" Text="NSW">
+                <Label Content="State : " Grid.Row="2" Grid.Column="4" Foreground="#539e8a"/>
+                <ComboBox  Grid.Row="2" Grid.Column="5" Width="100" Margin="5" Text="NSW">
                     <ComboBox.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -102,6 +104,7 @@
                     <ComboBoxItem Content="WA"/>
                     <ComboBoxItem Content="TAS"/>
                     <ComboBoxItem Content="QLD"/>
+                    <ComboBoxItem Content="SA"/>
                 </ComboBox>
 
             </Grid>

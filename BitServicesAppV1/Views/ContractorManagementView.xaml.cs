@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+//add
+using BitServicesDesktopApp.ViewModels;
 
 namespace BitServicesDesktopApp
 {
@@ -23,11 +25,7 @@ namespace BitServicesDesktopApp
         public ContractorManagementView()
         {
             InitializeComponent();
-            // connect to db - connection string
-            // write query
-            // set data set records to datagrid
-            // extract as a method
-            // extract as a class having methods
+            DataContext = new ContractorManagementViewModel();
         }
     }
 }

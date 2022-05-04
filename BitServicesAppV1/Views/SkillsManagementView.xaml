@@ -56,7 +56,7 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Left Columns -->
-                <Label Content="Staff Id : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
+                <Label Content="Coordinator Id : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
                 <TextBlock x:Name="skillIdTxt" Grid.Row="0" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  />
                 <Label Content="FirstName : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a"/>
                 <TextBox x:Name="skillFirstNameTxt" Grid.Row="1" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>

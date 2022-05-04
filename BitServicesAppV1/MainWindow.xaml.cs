@@ -35,12 +35,6 @@ namespace BitServicesDesktopApp
         {
             contentFrame.Navigate(new ClientManagementView());
         }
-
-        private void StaffManagementBtn_Click(object sender, RoutedEventArgs e)
-        {
-            contentFrame.Navigate(new StaffManagementView());
-        }
-
         private void ContractorManagementBtn_Click(object sender, RoutedEventArgs e)
         {
             contentFrame.Navigate(new ContractorManagementView());
@@ -54,6 +48,11 @@ namespace BitServicesDesktopApp
         private void SkillsManagementBtn_Click(object sender, RoutedEventArgs e)
         {
             contentFrame.Navigate(new SkillsManagementView());
+        }
+
+        private void CoordinatorManagementBtn_Click(object sender, RoutedEventArgs e)
+        {
+            contentFrame.Navigate(new CoordinatorManagementView());
         }
     }
 }

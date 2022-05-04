@@ -50,7 +50,7 @@
                     <Button x:Name="ContractorManagementBtn" Foreground="#539e8a" Background="#202021" Content="Contractor Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6" Click="ContractorManagementBtn_Click"/>
                     <Button x:Name="JobManagementBtn" Foreground="#539e8a" Background="#202020" Content="Job Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6" Click="JobManagementBtn_Click" />
                     <Button x:Name="SkillsManagementBtn" Foreground="#539e8a" Background="#202020" Content="Skills Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6"  Click="SkillsManagementBtn_Click"  />
-                    <Button x:Name="StaffManagementBtn" Foreground="#539e8a" Background="#202020" Content="Staff Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6"  Click="StaffManagementBtn_Click" />
+                    <Button x:Name="CoordinatorManagementBtn" Foreground="#539e8a" Background="#202020" Content="Coordinator Management" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#ff8652" BorderThickness="0 0 0 .6"  Click="CoordinatorManagementBtn_Click" />
                   
                     <Image Source="./Images/BIT-logos2.jpg" Height="250" Width="250" VerticalAlignment="Bottom" Margin="0,100,0,0"/>
                 </StackPanel>

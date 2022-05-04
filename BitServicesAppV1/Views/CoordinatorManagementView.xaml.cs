@@ -12,18 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+//add
+using BitServicesDesktopApp.ViewModels;
 
 namespace BitServicesDesktopApp
 {
     /// <summary>
     /// Interaction logic for StaffManagementView.xaml
     /// </summary>
-    public partial class StaffManagementView : Page
+    public partial class CoordinatorManagementView : Page
     {
-        public StaffManagementView()
+        public CoordinatorManagementView()
         {
             InitializeComponent();
-           
+            DataContext = new CoordinatorManagementViewModel();
         }
     }
 }

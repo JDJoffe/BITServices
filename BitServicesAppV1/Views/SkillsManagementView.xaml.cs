@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+//add
+using BitServicesDesktopApp.ViewModels;
 
 namespace BitServicesDesktopApp.Views
 {
@@ -23,6 +25,7 @@ namespace BitServicesDesktopApp.Views
         public SkillsManagementView()
         {
             InitializeComponent();
+            DataContext = new SkillsManagementViewModel();
         }
     }
 }

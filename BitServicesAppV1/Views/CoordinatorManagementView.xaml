@@ -1,4 +1,4 @@
-﻿<Page x:Class="BitServicesDesktopApp.StaffManagementView"
+﻿<Page x:Class="BitServicesDesktopApp.CoordinatorManagementView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:BitServicesDesktopApp"
       mc:Ignorable="d" 
       d:DesignHeight="579" d:DesignWidth="1022"
-      Title="StaffManagementView">
+      Title="CoordinatorManagementView">
 
     <Grid>
         <Grid>
@@ -21,7 +21,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Staff Management" FontSize="28" FontWeight="Bold" Margin="10,5,5,0" Foreground="#539e8a" />
+                <TextBlock Grid.Column="0" Text="Coordinator Management" FontSize="28" FontWeight="Bold" Margin="10,5,5,0" Foreground="#539e8a" />
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <ComboBox x:Name="searchStaffCmb" Width="100" Margin="10">
                         <ComboBox.Background>
@@ -56,25 +56,25 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Left Columns -->
-                <Label Content="Staff Id : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBlock x:Name="staffIdTxt" Grid.Row="0" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  />
+                <Label Content=" Id : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBlock x:Name="CoordIdTxt" Grid.Row="0" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  />
                 <Label Content="FirstName : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="staffFirstNameTxt" Grid.Row="1" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordFirstNameTxt" Grid.Row="1" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="LastName : " Grid.Row="2" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="staffLastNameTxt" Grid.Row="2" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordLastNameTxt" Grid.Row="2" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="Address : " Grid.Row="3" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="staffAddressTxt" Grid.Row="3" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordAddressTxt" Grid.Row="3" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="Suburb : " Grid.Row="4" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="staffSuburbTxt" Grid.Row="4" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordSuburbTxt" Grid.Row="4" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="PostCode : " Grid.Row="5" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="staffPostcodeTxt" Grid.Row="5" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordPostcodeTxt" Grid.Row="5" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <!-- Right Columns -->
                 <Label Content="Phone : " Grid.Row="0" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="staffPhoneTxt" Grid.Row="0" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordPhoneTxt" Grid.Row="0" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="Email : " Grid.Row="1" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="staffEmailTxt" Grid.Row="1" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordEmailTxt" Grid.Row="1" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="BirthDate : " Grid.Row="2" Grid.Column="2" Foreground="#539e8a"/>
-                <DatePicker x:Name="staffDobDp" Grid.Row="2" Grid.Column="3" Margin="5" Foreground="Black" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <DatePicker x:Name="CoordDobDp" Grid.Row="2" Grid.Column="3" Margin="5" Foreground="Black" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 
                 <Label Content="                            Emergency Contacts   " Grid.Row="3" Grid.Column="3" Foreground="#ff8652" Margin="5" FontWeight="Bold" />
                 <Label Content="Contact Name : " Grid.Row="4" Grid.Column="2" Foreground="#539e8a"/>
