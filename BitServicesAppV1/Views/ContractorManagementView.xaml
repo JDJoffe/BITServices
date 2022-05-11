@@ -11,12 +11,11 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50px" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="50px" />
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -24,95 +23,114 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Contractor Management" FontSize="28" FontWeight="Bold" Margin="10,5,5,0" Foreground="#539e8a" />
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-                    <ComboBox x:Name="searchContractorCmb" Width="100" Margin="10">
-                    <ComboBox.Background>
-                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                            <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </ComboBox.Background>
-                    <ComboBoxItem Content="ID"/>
-                    <ComboBoxItem Content="FirstName"/>
-                    <ComboBoxItem Content="LastName"/>
-                    <ComboBoxItem Content="Skill"/>
-                    <ComboBoxItem Content="Jobs"/>
-                </ComboBox>
-                    <TextBox x:Name="searchContractorTxt" Width="300" Margin="10" Background="#282828" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" Foreground="#ffffff"/>
-                <Button x:Name="searchContractorBtn" Content="SEARCH" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#282828" />
-                   
-            </StackPanel>
+                    <ComboBox x:Name="searchContractorCmb" Width="100" Margin="10" Text="FirstName">
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                        <ComboBoxItem Content="ID"/>
+                        <ComboBoxItem Content="FirstName"/>
+                        <ComboBoxItem Content="LastName"/>
+                        <ComboBoxItem Content="Skills"/>
+                        <ComboBoxItem Content="Experience"/>
+                    </ComboBox>
+                    <TextBox x:Name="searchContractorTxt" Width="300" Margin="10" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" Foreground="#ffffff" TextWrapping="Wrap"/>
+                    <Button x:Name="searchContractorBtn" Content="SEARCH" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#282828" />
+                </StackPanel>
             </Grid>
-            <DataGrid Grid.Row="1" x:Name="ClientsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-            <TabControl Grid.Row="2" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <DataGrid Grid.RowSpan="2" x:Name="ContractorsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <DataGrid Grid.Row="0" Grid.Column="1" x:Name="ConSuburbDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"
+                          ItemsSource="{Binding ClientLocation}" SelectedItem="{Binding SelectedLocation}">
+                </DataGrid>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <TextBox Text="{Binding Client.Location}" x:Name="addLocationTxt" Width="80" Margin="5" Foreground="#539e8a" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                    <Button x:Name="removeLocationBtn" Width="80" Content="REMOVE" Margin="5" Foreground="#ff8652" Background="#202020" FontSize="18" FontWeight="Bold" Height="50" BorderBrush="#282828" Command="{Binding RemoveLocationCommand}"/>
+                    <Button x:Name="addLocationBtn" Width="55" Content="ADD" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="18" FontWeight="Bold" Height="50" BorderBrush="#282828" Command="{Binding AddLocationCommand}"/>
+                </StackPanel>
+            </Grid>
+            <TabControl Grid.Row="2" Background="#282828" BorderBrush="#ff8652" BorderThickness="0,0,0,.6">
                 <TabItem Header="Details" Foreground="#539e8a" Background="#202020" BorderBrush="#202020" BorderThickness="0,0,0,.6">
-                    <Grid>
+                    <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <!-- First two columns -->
-                        <Label Content="FirstName : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
-                        <TextBox x:Name="instFirstNameTxt" Grid.Row="0" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="LastName : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a"/>
-                        <TextBox x:Name="instLastNameTxt" Grid.Row="1" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="BirthDate : " Grid.Row="2" Grid.Column="0" Foreground="#539e8a"/>
-                        <DatePicker x:Name="instDobDp" Grid.Row="2" Grid.Column="1" Margin="5" Foreground="Black" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="Address : " Grid.Row="3" Grid.Column="0" Foreground="#539e8a"/>
-                        <TextBox x:Name="instAddressTxt" Grid.Row="3" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="Suburb : " Grid.Row="4" Grid.Column="0" Foreground="#539e8a"/>
-                        <TextBox x:Name="instSuburbTxt" Grid.Row="4" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="PostCode : " Grid.Row="5" Grid.Column="0" Foreground="#539e8a"/>
-                        <TextBox x:Name="instPostcodeTxt" Grid.Row="5" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                        <Label Content="First Name : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
+                        <TextBox x:Name="conFNameTxt" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"   Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
+                        <Label Content="Email : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a" />
+
+                        <TextBox x:Name="conEmailTxt" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"   Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap" />
+                       
+                        <Label Content="Experience : " Grid.Row="1" Grid.Column="3" Foreground="#539e8a"/>
+                        <ComboBox  Grid.Row="1" Grid.Column="4" Width="100" Margin="5" Text="Beginner">
+                            <ComboBox.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </ComboBox.Background>
+                            <ComboBoxItem Content="Beginner"/>
+                            <ComboBoxItem Content="Intermediate"/>
+                            <ComboBoxItem Content="Advanced"/>
+                            <ComboBoxItem Content="Expert"/>
+                        </ComboBox>
+                        <Label Content="Phone : " Grid.Row="2" Grid.Column="0" Foreground="#539e8a"/>
+                        <TextBox x:Name="conPhoneTxt" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
+
                         <!-- Last two columns -->
-                        <Label Content="Phone : " Grid.Row="0" Grid.Column="2" Foreground="#539e8a"/>
-                        <TextBox x:Name="instPhoneTxt" Grid.Row="0" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="Email : " Grid.Row="1" Grid.Column="2" Foreground="#539e8a"/>
-                        <TextBox x:Name="instEmailTxt" Grid.Row="1" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="Licence Number : " Grid.Row="2" Grid.Column="2" Foreground="#539e8a"/>
-                        <TextBox x:Name="LicenceNumberTxt" Grid.Row="2" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="Licence Expiry : " Grid.Row="3" Grid.Column="2" Foreground="#539e8a"/>
-                        <TextBox x:Name="ExpiryTxt" Grid.Row="3" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="Category  : " Grid.Row="4" Grid.Column="2" Foreground="#539e8a"/>
-                        <ComboBox x:Name="categoryCmb" Grid.Row="4" Grid.Column="3" Margin="5" Foreground="Black" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Label Content="Car Rego Number : " Grid.Row="5" Grid.Column="2" Foreground="#539e8a"/>
-                        <TextBox x:Name="regoNumberTxt" Grid.Row="5" Grid.Column="3" Margin="5" Background="#202020" Foreground="#ffffff"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                        <Label Content="Last Name : " Grid.Row="0" Grid.Column="3" Foreground="#539e8a"/>
+                        <TextBox x:Name="conLNameTxt" Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
+                        <Label Content="Suburb : " Grid.Row="1" Grid.Column="6" Foreground="#539e8a"/>
+                        <TextBox x:Name="conSuburbTxt" Grid.Row="1" Grid.Column="7"   Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
+                        <Label Content="Postcode : " Grid.Row="0" Grid.Column="6" Foreground="#539e8a"/>
+                        <TextBox x:Name="conPostcodeTxt" Grid.Row="0" Grid.Column="7" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                        <Label Content="State : " Grid.Row="2" Grid.Column="6" Foreground="#539e8a"/>
+                        <ComboBox  Grid.Row="2" Grid.Column="7" Width="100" Margin="5" Text="NSW">
+                            <ComboBox.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </ComboBox.Background>
+                            <ComboBoxItem Content="NSW"/>
+                            <ComboBoxItem Content="VIC"/>
+                            <ComboBoxItem Content="ACT"/>
+                            <ComboBoxItem Content="NT"/>
+                            <ComboBoxItem Content="WA"/>
+                            <ComboBoxItem Content="TAS"/>
+                            <ComboBoxItem Content="QLD"/>
+                            <ComboBoxItem Content="SA"/>
+                        </ComboBox>
+
                     </Grid>
                 </TabItem>
-                <TabItem Header="Skills Management" Foreground="#539e8a" Background="#202020" BorderBrush="#202020" BorderThickness="0,0,0,.6" >
-                    <Grid Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <DataGrid x:Name="preferredSkillsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                        <Grid Grid.Column="1" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="Skill : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"   />
-                            <TextBox x:Name="newSkillTxt" Grid.Row="0" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"  Width="200"/>
-                            <Button x:Name="deleteSkillBtn" Grid.Row="1" Grid.Column="0" Content="DELETE" Foreground="#ff8652" BorderBrush="#282828" BorderThickness="1" Background="#202020" FontSize="18" Margin="5"/>
-                            <Button x:Name="addSkillBtn" Grid.Row="1" Grid.Column="1" Content="ADD" Foreground="#539e8a" BorderBrush="#282828" BorderThickness="1" Background="#202020" FontSize="18" Margin="5"/>
-                        </Grid>
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Availability" Foreground="#539e8a" Background="#202020" BorderBrush="#202020" BorderThickness="0,0,0,.6">
-                    
+                <TabItem Header="Skills Management" Foreground="#539e8a" Background="#202020" BorderBrush="#202020" BorderThickness="0,0,0,.6">
+
                 </TabItem>
             </TabControl>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">

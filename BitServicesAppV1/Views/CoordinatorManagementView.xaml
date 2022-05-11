@@ -12,7 +12,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
@@ -35,7 +35,7 @@
                         <ComboBoxItem Content="LastName"/>
                         <ComboBoxItem Content="Department"/>
                     </ComboBox>
-                    <TextBox x:Name="searchStaffTxt" Width="300" Margin="10" Background="#282828" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" Foreground="#ffffff"/>
+                    <TextBox x:Name="searchStaffTxt" Width="300" Margin="10" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" Foreground="#ffffff" TextWrapping="Wrap"/>
                     <Button x:Name="searchStaffBtn" Content="SEARCH" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#282828" />
                 </StackPanel>
             </Grid>
@@ -46,42 +46,38 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Left Columns -->
                 <Label Content=" Id : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBlock x:Name="CoordIdTxt" Grid.Row="0" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  />
+                <TextBlock x:Name="CoordIdTxt" Grid.Row="0" Grid.Column="1" Margin="5" Grid.ColumnSpan="3" Foreground="#ffffff" Background="#202020" IsEnabled="False"  />
                 <Label Content="FirstName : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="CoordFirstNameTxt" Grid.Row="1" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordFirstNameTxt" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
                 <Label Content="LastName : " Grid.Row="2" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="CoordLastNameTxt" Grid.Row="2" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="Address : " Grid.Row="3" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="CoordAddressTxt" Grid.Row="3" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="Suburb : " Grid.Row="4" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="CoordSuburbTxt" Grid.Row="4" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="PostCode : " Grid.Row="5" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="CoordPostcodeTxt" Grid.Row="5" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <!-- Right Columns -->
-                <Label Content="Phone : " Grid.Row="0" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="CoordPhoneTxt" Grid.Row="0" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="Email : " Grid.Row="1" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="CoordEmailTxt" Grid.Row="1" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="BirthDate : " Grid.Row="2" Grid.Column="2" Foreground="#539e8a"/>
-                <DatePicker x:Name="CoordDobDp" Grid.Row="2" Grid.Column="3" Margin="5" Foreground="Black" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="CoordLastNameTxt" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
                 
-                <Label Content="                            Emergency Contacts   " Grid.Row="3" Grid.Column="3" Foreground="#ff8652" Margin="5" FontWeight="Bold" />
-                <Label Content="Contact Name : " Grid.Row="4" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="contactNameTxt" Grid.Row="4" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="Contact Number  : " Grid.Row="5" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="expiryTxt" Grid.Row="5" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-         
+                
+                <!-- Right Columns -->
+                <Label Content="Phone : " Grid.Row="0" Grid.Column="4" Foreground="#539e8a" />
+                <TextBox x:Name="CoordPhoneTxt" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
+                <Label Content="Email : " Grid.Row="1" Grid.Column="4" Foreground="#539e8a"/>
+                <TextBox x:Name="CoordEmailTxt" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
+                <Label Content="Administrator : " Grid.Row="2" Grid.Column="6" Foreground="#539e8a"/>
+                <CheckBox Grid.Row="2" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+
             </Grid>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">
                 <Button x:Name="deleteBtn" Content="DELETE" Width="100" Margin="5" Foreground="#ff8652" Background="#202020" FontSize="21" FontWeight="Bold"  BorderBrush="#282828"/>

@@ -79,21 +79,17 @@
     <Compile Include="ViewModels\ContractorManagementViewModel.cs" />
     <Compile Include="ViewModels\CoordinatorManagementViewModel.cs" />
     <Compile Include="ViewModels\JobManagementViewModel.cs" />
-    <Compile Include="ViewModels\SkillsManagementViewModel.cs" />
-    <Compile Include="Views\JobManagementView.xaml.cs">
-      <DependentUpon>JobManagementView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ClientManagementView.xaml.cs">
       <DependentUpon>ClientManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ContractorManagementView.xaml.cs">
       <DependentUpon>ContractorManagementView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SkillsManagementView.xaml.cs">
-      <DependentUpon>SkillsManagementView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\CoordinatorManagementView.xaml.cs">
       <DependentUpon>CoordinatorManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JobManagementView.xaml.cs">
+      <DependentUpon>JobManagementView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -107,25 +103,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\JobManagementView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\ClientManagementView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\ContractorManagementView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\SkillsManagementView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\CoordinatorManagementView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\JobManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

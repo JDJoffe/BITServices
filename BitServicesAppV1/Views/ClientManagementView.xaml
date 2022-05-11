@@ -34,7 +34,7 @@
                         <ComboBoxItem Content="LastName"/>
                         <ComboBoxItem Content="Jobs"/>
                     </ComboBox>
-                    <TextBox x:Name="searchClientTxt" Width="300" Margin="10" Background="#282828" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" Foreground="#ffffff"/>
+                    <TextBox x:Name="searchClientTxt" Width="300" Margin="10" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" Foreground="#ffffff" TextWrapping="Wrap"/>
                     <Button x:Name="searchClientBtn" Content="SEARCH" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold" Height="50" BorderBrush="#282828" />
                 </StackPanel>
             </Grid>
@@ -74,22 +74,22 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <!-- First two columns -->
-                <Label Content="Business Name : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="cliNameTxt" Grid.Row="0" Grid.Column="1"  Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <Label Content="Client Name : " Grid.Row="0" Grid.Column="0" Foreground="#539e8a"/>
+                <TextBox x:Name="cliNameTxt" Grid.Row="0" Grid.Column="1"  Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
                 <Label Content="Email : " Grid.Row="1" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="cliEmailTxt" Grid.Row="1" Grid.Column="1"   Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="cliEmailTxt" Grid.Row="1" Grid.Column="1"   Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
 
                 <Label Content="Phone : " Grid.Row="2" Grid.Column="0" Foreground="#539e8a"/>
-                <TextBox x:Name="cliPhoneTxt" Grid.Row="2" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="cliPhoneTxt" Grid.Row="2" Grid.Column="1" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
 
                 <!-- Last two columns -->
                 <Label Content="Street : " Grid.Row="0" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="cliStreetTxt" Grid.Row="0" Grid.Column="3"  Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="cliStreetTxt" Grid.Row="0" Grid.Column="3"  Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
                 <Label Content="Suburb : " Grid.Row="1" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="cliSuburbTxt" Grid.Row="1" Grid.Column="3"  Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TextBox x:Name="cliSuburbTxt" Grid.Row="1" Grid.Column="3"  Grid.ColumnSpan="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" TextWrapping="Wrap"/>
                 <Label Content="Postcode : " Grid.Row="2" Grid.Column="2" Foreground="#539e8a"/>
-                <TextBox x:Name="cliPostcodeTxt" Grid.Row="2" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <Label Content="State : " Grid.Row="2" Grid.Column="4" Foreground="#539e8a"/>
+                <TextBox x:Name="cliPostcodeTxt" Grid.Row="2" Grid.Column="3" Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6" />
+                <Label Content="State : " Grid.Row="2" Grid.Column="4" Foreground="#539e8a" />
                 <ComboBox  Grid.Row="2" Grid.Column="5" Width="100" Margin="5" Text="NSW">
                     <ComboBox.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">

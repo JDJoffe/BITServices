@@ -1,4 +1,4 @@
-﻿using BitServicesDesktopApp.Views;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace BitServicesDesktopApp
 {
     /// <summary>
@@ -43,11 +42,6 @@ namespace BitServicesDesktopApp
         private void JobManagementBtn_Click(object sender, RoutedEventArgs e)
         {
             contentFrame.Navigate(new JobManagementView());
-        }
-
-        private void SkillsManagementBtn_Click(object sender, RoutedEventArgs e)
-        {
-            contentFrame.Navigate(new SkillsManagementView());
         }
 
         private void CoordinatorManagementBtn_Click(object sender, RoutedEventArgs e)
