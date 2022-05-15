@@ -229,15 +229,15 @@
     <Content Include="Images\Search.png" />
     <Content Include="Images\tech.jpg" />
     <Content Include="Pages\About.aspx" />
-    <Content Include="Pages\AcceptedJobs.aspx" />
+    <Content Include="Pages\AllAcceptedJobs.aspx" />
     <Content Include="Pages\ClientJobs.aspx" />
-    <Content Include="Pages\CompletedJobs.aspx" />
+    <Content Include="Pages\AllCompletedJobs.aspx" />
     <Content Include="Pages\Contact.aspx" />
     <Content Include="Pages\ContractorJobs.aspx" />
     <Content Include="Pages\HomePage.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\NewJob.aspx" />
-    <Content Include="Pages\RejectedJobs.aspx" />
+    <Content Include="Pages\AllRejectedJobs.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -276,6 +276,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BLL\Client.cs" />
+    <Compile Include="BLL\CompletedJobs.cs" />
     <Compile Include="BLL\Contractor.cs" />
     <Compile Include="BLL\Job.cs" />
     <Compile Include="BLL\User.cs" />
@@ -290,12 +291,12 @@
     <Compile Include="Pages\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AcceptedJobs.aspx.cs">
-      <DependentUpon>AcceptedJobs.aspx</DependentUpon>
+    <Compile Include="Pages\AllAcceptedJobs.aspx.cs">
+      <DependentUpon>AllAcceptedJobs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\AcceptedJobs.aspx.designer.cs">
-      <DependentUpon>AcceptedJobs.aspx</DependentUpon>
+    <Compile Include="Pages\AllAcceptedJobs.aspx.designer.cs">
+      <DependentUpon>AllAcceptedJobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ClientJobs.aspx.cs">
       <DependentUpon>ClientJobs.aspx</DependentUpon>
@@ -304,12 +305,12 @@
     <Compile Include="Pages\ClientJobs.aspx.designer.cs">
       <DependentUpon>ClientJobs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CompletedJobs.aspx.cs">
-      <DependentUpon>CompletedJobs.aspx</DependentUpon>
+    <Compile Include="Pages\AllCompletedJobs.aspx.cs">
+      <DependentUpon>AllCompletedJobs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\CompletedJobs.aspx.designer.cs">
-      <DependentUpon>CompletedJobs.aspx</DependentUpon>
+    <Compile Include="Pages\AllCompletedJobs.aspx.designer.cs">
+      <DependentUpon>AllCompletedJobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -346,12 +347,12 @@
     <Compile Include="Pages\NewJob.aspx.designer.cs">
       <DependentUpon>NewJob.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RejectedJobs.aspx.cs">
-      <DependentUpon>RejectedJobs.aspx</DependentUpon>
+    <Compile Include="Pages\AllRejectedJobs.aspx.cs">
+      <DependentUpon>AllRejectedJobs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\RejectedJobs.aspx.designer.cs">
-      <DependentUpon>RejectedJobs.aspx</DependentUpon>
+    <Compile Include="Pages\AllRejectedJobs.aspx.designer.cs">
+      <DependentUpon>AllRejectedJobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

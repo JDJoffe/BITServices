@@ -57,38 +57,38 @@ namespace BitServicesWebApp.BLL
         #endregion
 
         #region Pub Methods
-        public int InserJob()
-        {
-            int returnVal = 0;
-            string sql = "INSERT INTO Booking(availabilityid, customerID, pickupaddress, suburb, postcode, " +
-               "state, bookingStatusId,paymentStatusId, kilometres)" +
-               " values(" + AvailabilityId + ", " + CustomerId + ", '" + PickUpAddress + "'," +
-               " '" + Suburb + "' ,'" + PostCode + "', '" + State
-               + "', 1, 1, 0)";
-            returnVal = _db.ExecuteNonQuery(sql);
-            string updatesql = "UPDATE AVAILABILITY SET status = 'NA' WHERE availabilityid = "
-                  + AvailabilityId;
-            _db.ExecuteNonQuery(updatesql);
-            return returnVal;
-        }
+        //public int InserJob()
+        //{
+        //    int returnVal = 0;
+        //    string sql = "INSERT INTO Booking(availabilityid, customerID, pickupaddress, suburb, postcode, " +
+        //       "state, bookingStatusId,paymentStatusId, kilometres)" +
+        //       " values(" + AvailabilityId + ", " + CustomerId + ", '" + PickUpAddress + "'," +
+        //       " '" + Suburb + "' ,'" + PostCode + "', '" + State
+        //       + "', 1, 1, 0)";
+        //    returnVal = _db.ExecuteNonQuery(sql);
+        //    string updatesql = "UPDATE AVAILABILITY SET status = 'NA' WHERE availabilityid = "
+        //          + AvailabilityId;
+        //    _db.ExecuteNonQuery(updatesql);
+        //    return returnVal;
+        //}
 
-        public int ApproveJob()
-        {
-            string sql = "UPDATE BOOKING SET paymentstatusid = 2 WHERE bookingId = @BookingId";
-            SqlParameter[] objparams = new SqlParameter[1];
-            objparams[0] = new SqlParameter("@BookingId", DbType.Int32) { Value = BookingId };
-            int returnVal = _db.ExecuteNonQuery(sql, objparams);
-            return returnVal; // payment status
-        }
+        //public int ApproveJob()
+        //{
+        //    string sql = "UPDATE BOOKING SET paymentstatusid = 2 WHERE bookingId = @BookingId";
+        //    SqlParameter[] objparams = new SqlParameter[1];
+        //    objparams[0] = new SqlParameter("@BookingId", DbType.Int32) { Value = BookingId };
+        //    int returnVal = _db.ExecuteNonQuery(sql, objparams);
+        //    return returnVal; // payment status
+        //}
 
-        public int RejectJob()
-        {
-            string sql = "UPDATE BOOKING SET paymentstatusid = 4 WHERE bookingId = @BookingId";
-            SqlParameter[] objparams = new SqlParameter[1];
-            objparams[0] = new SqlParameter("@BookingId", DbType.Int32) { Value = BookingId };
-            int returnVal = _db.ExecuteNonQuery(sql, objparams);
-            return returnVal; // payment status
-        }
+        //public int RejectJob()
+        //{
+        //    string sql = "UPDATE BOOKING SET paymentstatusid = 4 WHERE bookingId = @BookingId";
+        //    SqlParameter[] objparams = new SqlParameter[1];
+        //    objparams[0] = new SqlParameter("@BookingId", DbType.Int32) { Value = BookingId };
+        //    int returnVal = _db.ExecuteNonQuery(sql, objparams);
+        //    return returnVal; // payment status
+        //}
 
 
         #endregion

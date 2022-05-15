@@ -9,7 +9,7 @@ using BitServicesWebApp.BLL;
 
 namespace BitServicesWebApp.Pages
 {
-    public partial class CompletedJobs : System.Web.UI.Page
+    public partial class AllCompletedJobs : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,15 +21,15 @@ namespace BitServicesWebApp.Pages
             Job Job = new Job();
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = gvCompletedJobs.Rows[rowIndex];
-            Job.JobId = Convert.ToInt32(row.Cells[2].Text);
+            Job.Job_Id = Convert.ToInt32(row.Cells[2].Text);
             if (e.CommandName == "Approve")
             {
 
-                Job.ApproveJob();
+               // Job.ApproveJob();
             }
             else if (e.CommandName == "Reject")
             {
-                Job.RejectJob();
+              //  Job.RejectJob();
             }
             RefreshGrid();
         }

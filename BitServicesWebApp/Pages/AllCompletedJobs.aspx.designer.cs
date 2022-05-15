@@ -11,7 +11,7 @@ namespace BitServicesWebApp.Pages
 {
 
 
-    public partial class CompletedJobs
+    public partial class AllCompletedJobs
     {
 
         /// <summary>
