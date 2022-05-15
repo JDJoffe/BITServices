@@ -111,7 +111,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">
                 <Button x:Name="deleteBtn" Content="DELETE" Width="100" Margin="5" Foreground="#ff8652" Background="#202020" FontSize="21" FontWeight="Bold"  BorderBrush="#282828"/>
                 <Button x:Name="updateBtn" Content="SAVE" Width="100" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold"  BorderBrush="#282828"/>
-                <Button x:Name="addBtn" Content="ADD" Width="100" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold"  BorderBrush="#282828"/>
+                <Button x:Name="addBtn" Content="ADD" Width="100" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="21" FontWeight="Bold"  BorderBrush="#282828" Click="addBtn_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

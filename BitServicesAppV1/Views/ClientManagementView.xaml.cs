@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 //add
 using BitServicesDesktopApp.ViewModels;
+using BitServicesDesktopApp.Logging;
 
 namespace BitServicesDesktopApp
 {
@@ -22,11 +23,20 @@ namespace BitServicesDesktopApp
     /// </summary>
     public partial class ClientManagementView : Page
     {
+       
         public ClientManagementView()
         {
             InitializeComponent();
             DataContext = new ClientManagementViewModel();
 
         }
+
+        private void addBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+           // LogSwitch.Log(LogType.File,$"A new client  of the name {cliNameTxt.Text} has been added");
+        }
     }
+   
 }
