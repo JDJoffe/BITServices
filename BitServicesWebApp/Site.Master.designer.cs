@@ -33,6 +33,42 @@ namespace BitServicesWebApp
         protected global::System.Web.UI.WebControls.LinkButton loginLbtn;
 
         /// <summary>
+        /// newJobLbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton newJobLbtn;
+
+        /// <summary>
+        /// accJobLbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton accJobLbtn;
+
+        /// <summary>
+        /// rejJobLbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton rejJobLbtn;
+
+        /// <summary>
+        /// logoutLbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton logoutLbtn;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

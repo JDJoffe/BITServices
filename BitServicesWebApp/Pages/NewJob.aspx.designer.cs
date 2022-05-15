@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace BitServicesWebApp
+namespace BitServicesWebApp.Pages
 {
-    public partial class About
+    public partial class NewJob
     {
     }
 }

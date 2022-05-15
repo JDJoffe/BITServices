@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace BitServicesWebApp
+namespace BitServicesWebApp.Pages
 {
-    public partial class _Default
+    public partial class RejectedJobs
     {
     }
 }

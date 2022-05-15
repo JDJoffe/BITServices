@@ -110,7 +110,7 @@
                 <Label Content="Client Name : " Grid.Row="0" Grid.Column="2" Foreground="#539e8a"/>
                 <TextBox x:Name="cliNameTxt" Grid.Row="0" Grid.Column="3"  Margin="5" Foreground="#ffffff" Background="#202020"  BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
                 <Label Content="Job Date : " Grid.Row="1" Grid.Column="2" Foreground="#539e8a"/>
-                <DatePicker x:Name="bookingDateDp" Grid.Row="1" Grid.Column="3"  Margin="5" 
+                <DatePicker x:Name="JobDateDp" Grid.Row="1" Grid.Column="3"  Margin="5" 
              Foreground="Black" Background="#202020"   BorderThickness="0,0,0,0" VerticalAlignment="Center"/>
                 <Label Content="Priority : " Grid.Row="2" Grid.Column="2" Foreground="#539e8a"/>
                 <ComboBox x:Name="priorityCmb" Grid.Row="2" Grid.Column="3" Margin="5">

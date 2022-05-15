@@ -46,6 +46,25 @@
                             </asp:LinkButton>
                         </li>
                     </ul>
+                      <li class="nav-item active">
+                            <asp:LinkButton CssClass="nav-link" ID="newJobLbtn" runat="server"  Visible="false" OnClick="newJobLbtn_Click">
+                                New Job
+                            </asp:LinkButton>
+                        </li>
+                         <li class="nav-item active">
+                            <asp:LinkButton CssClass="nav-link" ID="accJobLbtn" runat="server"  Visible="false" Onclick="accJobLbtn_Click">
+                                Accepted Jobs
+                            </asp:LinkButton>
+                              <li class="nav-item active">
+                            <asp:LinkButton CssClass="nav-link" ID="rejJobLbtn" runat="server"  Visible="false" Onclick="rejJobLbtn_Click">
+                                Rejected Jobs
+                            </asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton CssClass="nav-link" ID="logoutLbtn" runat="server"  Visible="false" OnClick="logoutLbtn_Click">
+                                Logout
+                            </asp:LinkButton>
+                        </li>
                 </div>
             </nav>
         </div>

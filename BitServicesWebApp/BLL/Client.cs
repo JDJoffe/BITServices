@@ -32,13 +32,13 @@ namespace BitServicesWebApp.BLL
 
         #region Pub Methods
 
-        public DataTable AllBookings()
+        public DataTable AllJobs()
         {
             string sql = "select * from JOB where Client_Id = @Client_Id";
             SqlParameter[] objparams = new SqlParameter[1];
             objparams[0] = new SqlParameter("@Client_Id", DbType.Int32) { Value = Client_Id };
-            DataTable bookings = _Db.ExecuteSQL(sql, objparams);
-            return bookings;
+            DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
+            return Jobs;
         }
         #endregion
 
