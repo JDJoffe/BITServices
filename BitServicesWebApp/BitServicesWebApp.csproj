@@ -279,6 +279,7 @@
     <Compile Include="BLL\CompletedJobs.cs" />
     <Compile Include="BLL\Contractor.cs" />
     <Compile Include="BLL\Job.cs" />
+    <Compile Include="BLL\RejectedJobs.cs" />
     <Compile Include="BLL\User.cs" />
     <Compile Include="DAL\SQLDAL.cs" />
     <Compile Include="Global.asax.cs">

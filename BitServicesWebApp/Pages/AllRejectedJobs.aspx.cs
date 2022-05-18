@@ -11,7 +11,24 @@ namespace BitServicesWebApp.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["InstructorId"] != null)
+                {
+                    // LinkButton signUp = (LinkButton)Master.FindControl("signUpLbtn");
+                    // LinkButton login = (LinkButton)Master.FindControl("loginLbtn");
+                    //  LinkButton logout = (LinkButton)Master.FindControl("logoutLbtn");
+                    // signUp.Visible = false;
+                    // login.Visible = false;
+                    //  newBooking.Visible = true;
+                    //  logout.Visible = true;
+                    RefreshGrid();
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
+            }
         }
     }
 }
