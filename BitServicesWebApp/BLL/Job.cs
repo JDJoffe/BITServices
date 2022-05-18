@@ -23,6 +23,9 @@ namespace BitServicesWebApp.BLL
         public DateTime End_Time { get; set; }
         public string Priority { get; set; }
         public string Skill { get; set; }
+        public string Street { get; set; }
+        public string Suburb { get; set; }
+        public string Postcode { get; set; }
         public string Description { get; set; }
         public int Distance { get; set; }
         public int Coordinator_Id { get; set; }
@@ -44,9 +47,12 @@ namespace BitServicesWebApp.BLL
             Date = Convert.ToDateTime(dr["Date"].ToString());
             Start_Time = Convert.ToDateTime(dr["Start_Time"].ToString());
             End_Time = Convert.ToDateTime(dr["End_Time"].ToString());
-            Priority = dr["State"].ToString();
-            Skill = dr["State"].ToString();
-            Description = dr["State"].ToString();
+            Priority = dr["Priority"].ToString();
+            Skill = dr["Skill"].ToString();
+            Description = dr["Description"].ToString();
+            Street = dr["Street"].ToString();
+            Suburb = dr["Suburb"].ToString();
+            Postcode = dr["Postcode"].ToString();
             Distance = Convert.ToInt32(dr["Distance"].ToString());
             Coordinator_Id = Convert.ToInt32(dr["Coordinator_Id"].ToString());
             Status = dr["State"].ToString();
@@ -57,38 +63,7 @@ namespace BitServicesWebApp.BLL
         #endregion
 
         #region Pub Methods
-        //public int InserJob()
-        //{
-        //    int returnVal = 0;
-        //    string sql = "INSERT INTO Booking(availabilityid, customerID, pickupaddress, suburb, postcode, " +
-        //       "state, bookingStatusId,paymentStatusId, kilometres)" +
-        //       " values(" + AvailabilityId + ", " + CustomerId + ", '" + PickUpAddress + "'," +
-        //       " '" + Suburb + "' ,'" + PostCode + "', '" + State
-        //       + "', 1, 1, 0)";
-        //    returnVal = _db.ExecuteNonQuery(sql);
-        //    string updatesql = "UPDATE AVAILABILITY SET status = 'NA' WHERE availabilityid = "
-        //          + AvailabilityId;
-        //    _db.ExecuteNonQuery(updatesql);
-        //    return returnVal;
-        //}
-
-        //public int ApproveJob()
-        //{
-        //    string sql = "UPDATE BOOKING SET paymentstatusid = 2 WHERE bookingId = @BookingId";
-        //    SqlParameter[] objparams = new SqlParameter[1];
-        //    objparams[0] = new SqlParameter("@BookingId", DbType.Int32) { Value = BookingId };
-        //    int returnVal = _db.ExecuteNonQuery(sql, objparams);
-        //    return returnVal; // payment status
-        //}
-
-        //public int RejectJob()
-        //{
-        //    string sql = "UPDATE BOOKING SET paymentstatusid = 4 WHERE bookingId = @BookingId";
-        //    SqlParameter[] objparams = new SqlParameter[1];
-        //    objparams[0] = new SqlParameter("@BookingId", DbType.Int32) { Value = BookingId };
-        //    int returnVal = _db.ExecuteNonQuery(sql, objparams);
-        //    return returnVal; // payment status
-        //}
+       
 
 
         #endregion

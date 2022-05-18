@@ -36,8 +36,14 @@ namespace BitServicesWebApp.BLL
 
         public DataTable AllJobs()
         {
-            string sql = "select j.Job_Id, cl.Name, J.Priority, J.Skill, J.Description FROM CLIENT cl, JOB j, AVAILABILITY a, CONTRACTOR co" +
-                " where co.contractor_id = a.contractor_id AND cl.Client_Id = j.Client_Id AND co.contractor_Id = j.contractor_Id AND co.contractor_Id = @Contractor_Id ";
+            string sql =
+            "SELECT cl.Name, J.Priority, J.Skill, J.Description, CONCAT(DATEPART(day,j.date),'/') + CONCAT(DATEPART(month,j.date),'/') + CONVERT(varchar,DATEPART(year,j.date))AS Date, j.street, j.suburb, j.postcode " +
+            "FROM JOB j " +
+            "INNER JOIN CLIENT cl ON j.Client_Id = cl.Client_Id " +
+            "INNER JOIN CONTRACTOR co ON j.Contractor_Id = co.Contractor_Id " +
+            "INNER JOIN JOB_STATUS js ON j.Job_Id = js.Job_Id " +
+            "WHERE co.Contractor_Id = @Contractor_Id " +
+            "AND js.Status = 'Assigned'";
             SqlParameter[] objparams = new SqlParameter[1];
             objparams[0] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = Contractor_Id };
             DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
@@ -47,7 +53,13 @@ namespace BitServicesWebApp.BLL
         // below not complete
         public DataTable AllAcceptedJobs()
         {
-            string sql = "select j.Job_Id, cl.Name, J.Priority, J.Skill, J.Description FROM CLIENT cl, JOB j, AVAILABILITY a, CONTRACTOR co, JOB_STATUS js where co.contractor_id = a.contractor_id AND cl.Client_Id = j.Client_Id AND co.contractor_Id = @Contractor_Id AND js.status = 'Accepted'";
+            string sql = "SELECT cl.Name, J.Priority, J.Skill, J.Description, CONVERT(date,j.Date) [Date], j.street, j.suburb, j.postcode " +
+            "FROM JOB j " +
+            "INNER JOIN CLIENT cl ON j.Client_Id = cl.Client_Id " +
+            "INNER JOIN CONTRACTOR co ON j.Contractor_Id = co.Contractor_Id " +
+            "INNER JOIN JOB_STATUS js ON j.Job_Id = js.Job_Id " +
+            "WHERE co.Contractor_Id = @Contractor_Id " +
+            "AND js.Status = 'Accepted'";
             SqlParameter[] objparams = new SqlParameter[1];
             objparams[0] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = Contractor_Id };
             DataTable Jobs = _Db.ExecuteSQL(sql, objparams);

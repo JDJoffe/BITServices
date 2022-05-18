@@ -21,50 +21,50 @@
         <div>
 
 
-            <nav class="navbar navbar-expand-sm navbar-dark border-bottom" style="background-color:#282828; border:50px; border-color:#ff8652">
-                <div style="background-color:#202020">
+            <nav class="navbar navbar-expand-sm navbar-dark border-bottom" style="background-color: #282828; border: 50px; border-color: #ff8652">
+                <div style="background-color: #202020">
                     <img src="../Images/BIT-logos2.jpg" width="100" height="100" />
                 </div>
-                <a class="navbar-brand" href="#">
-                </a>
+                <a class="navbar-brand" href="#"></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link hover" href="HomePage.aspx" style="font-weight:bold" >Home</a>
+                            <a class="nav-link hover" href="HomePage.aspx" style="font-weight: bold">Home</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="About.aspx" style="font-weight:bold">About Us</a>
+                            <a class="nav-link" href="About.aspx" style="font-weight: bold">About Us</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="Contact.aspx" style="font-weight:bold">Contact </a>
+                            <a class="nav-link" href="Contact.aspx" style="font-weight: bold">Contact </a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav" style="margin-right:20px;">
+                    <ul class="navbar-nav" style="margin-right: 20px;">
                         <li class="nav-item active">
-                            <asp:LinkButton CssClass="nav-link" ID="loginLbtn" runat="server" OnClick="loginLbtn_Click" style="font-weight:bold">
+                            <asp:LinkButton CssClass="nav-link" ID="loginLbtn" runat="server" OnClick="loginLbtn_Click" Style="font-weight: bold">
                                     Login
                             </asp:LinkButton>
                         </li>
-                    </ul>
-                      <li class="nav-item active">
-                            <asp:LinkButton CssClass="nav-link" ID="newJobLbtn" runat="server"  Visible="false" OnClick="newJobLbtn_Click">
+
+                        <li class="nav-item active">
+                            <asp:LinkButton CssClass="nav-link" ID="newJobLbtn" runat="server" Visible="false" OnClick="newJobLbtn_Click" Style="font-weight: bold">
                                 New Job
                             </asp:LinkButton>
                         </li>
-                         <li class="nav-item active">
-                            <asp:LinkButton CssClass="nav-link" ID="accJobLbtn" runat="server"  Visible="false" Onclick="accJobLbtn_Click">
+                        <li class="nav-item active">
+                            <asp:LinkButton CssClass="nav-link" ID="accJobLbtn" runat="server" Visible="false" OnClick="accJobLbtn_Click" Style="font-weight: bold">
                                 Accepted Jobs
                             </asp:LinkButton>
-                              <li class="nav-item active">
-                            <asp:LinkButton CssClass="nav-link" ID="rejJobLbtn" runat="server"  Visible="false" Onclick="rejJobLbtn_Click">
+                        <li class="nav-item active">
+                            <asp:LinkButton CssClass="nav-link" ID="rejJobLbtn" runat="server" Visible="false" OnClick="rejJobLbtn_Click" Style="font-weight: bold">
                                 Rejected Jobs
                             </asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                            <asp:LinkButton CssClass="nav-link" ID="logoutLbtn" runat="server"  Visible="false" OnClick="logoutLbtn_Click">
+                            <asp:LinkButton CssClass="nav-link" ID="logoutLbtn" runat="server" Visible="false" OnClick="logoutLbtn_Click" Style="font-weight: bold">
                                 Logout
                             </asp:LinkButton>
                         </li>
+                    </ul>
                 </div>
             </nav>
         </div>

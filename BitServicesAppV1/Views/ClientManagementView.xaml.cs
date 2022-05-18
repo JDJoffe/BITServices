@@ -23,7 +23,7 @@ namespace BitServicesDesktopApp
     /// </summary>
     public partial class ClientManagementView : Page
     {
-       
+        public static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         public ClientManagementView()
         {
             InitializeComponent();
@@ -33,8 +33,8 @@ namespace BitServicesDesktopApp
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            
 
+            logger.Info($"A new client  of the name {cliNameTxt.Text} has been added");
            // LogSwitch.Log(LogType.File,$"A new client  of the name {cliNameTxt.Text} has been added");
         }
     }
