@@ -25,8 +25,8 @@
                         </div>
                         <div class="row">
                             <div class="col-12 mx-auto">
-                                <asp:GridView ID="gvAccJobs" CssClass="table table-striped table-bordered" runat="server" OnRowCommand="gvAccJobs_RowCommand">
-
+                                <%--<asp:GridView ID="gvAccJobs" CssClass="table table-striped table-bordered" runat="server" >--%>
+                                <asp:GridView ID="gvAccJobs" CssClass="table table-striped table-bordered" runat="server" OnRowCommand="gvAccJobs_RowCommand" >
                                     <Columns>
                                         <asp:TemplateField HeaderText="Distance">
                                             <ItemTemplate>
