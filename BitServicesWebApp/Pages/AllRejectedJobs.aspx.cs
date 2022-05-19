@@ -22,7 +22,7 @@ namespace BitServicesWebApp.Pages
                     // login.Visible = false;
                     //  newBooking.Visible = true;
                     //  logout.Visible = true;
-                    RefreshGrid();
+                    //RefreshGrid();
                 }
                 else
                 {

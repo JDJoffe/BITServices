@@ -37,7 +37,7 @@ namespace BitServicesWebApp.BLL
         public DataTable AllJobs()
         {
             string sql =
-            "SELECT cl.Name, J.Priority, J.Skill, J.Description, CONCAT(DATEPART(day,j.date),'/') + CONCAT(DATEPART(month,j.date),'/') + CONVERT(varchar,DATEPART(year,j.date))AS Date, j.street, j.suburb, j.postcode " +
+            "SELECT j.job_id, cl.Name, J.Priority, J.Skill, J.Description, CONCAT(DATEPART(day,j.date),'/') + CONCAT(DATEPART(month,j.date),'/') + CONVERT(varchar,DATEPART(year,j.date))AS Date, j.street, j.suburb, j.postcode " +
             "FROM JOB j " +
             "INNER JOIN CLIENT cl ON j.Client_Id = cl.Client_Id " +
             "INNER JOIN CONTRACTOR co ON j.Contractor_Id = co.Contractor_Id " +
@@ -53,7 +53,7 @@ namespace BitServicesWebApp.BLL
         // below not complete
         public DataTable AllAcceptedJobs()
         {
-            string sql = "SELECT cl.Name, J.Priority, J.Skill, J.Description, CONVERT(date,j.Date) [Date], j.street, j.suburb, j.postcode " +
+            string sql = "SELECT j.job_id, cl.Name, J.Priority, J.Skill, J.Description, CONVERT(date,j.Date) [Date], j.street, j.suburb, j.postcode " +
             "FROM JOB j " +
             "INNER JOIN CLIENT cl ON j.Client_Id = cl.Client_Id " +
             "INNER JOIN CONTRACTOR co ON j.Contractor_Id = co.Contractor_Id " +

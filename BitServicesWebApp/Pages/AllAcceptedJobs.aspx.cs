@@ -30,7 +30,7 @@ namespace BitServicesWebApp.Pages
                     rejectedJobs.Visible = true;
                     Contractor currContractor = new Contractor();
                     currContractor.Contractor_Id = Convert.ToInt32(Session["Contractor_Id"].ToString());
-                    gvAccJobs.DataSource = currContractor.AllJobs().DefaultView;
+                    gvAccJobs.DataSource = currContractor.AllAcceptedJobs().DefaultView;
                     gvAccJobs.DataBind();
                 }
                 else

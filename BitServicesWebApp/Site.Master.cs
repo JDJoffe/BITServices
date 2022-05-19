@@ -21,7 +21,7 @@ namespace BitServicesWebApp
 
         protected void accJobLbtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AcceptedJobs.aspx");
+            Response.Redirect("AllAcceptedJobs.aspx");
         }
 
         protected void logoutLbtn_Click(object sender, EventArgs e)
