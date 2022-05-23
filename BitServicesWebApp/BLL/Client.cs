@@ -34,12 +34,25 @@ namespace BitServicesWebApp.BLL
 
         public DataTable AllJobs()
         {
-            string sql = "select * from JOB where Client_Id = @Client_Id";
+            string sql = "SELECT Job_Id, " +
+                               " CONVERT(CHAR(10),Date,103) Date, " +
+                               " CONVERT(CHAR(5),Start_Time,108) StartTime, " +
+                               " CONVERT(CHAR(5),End_Time,108) EndTime, " +
+                               " Priority, " +
+                               " Skill, " +
+                               " Description, " +
+                               " Street, " +
+                               " Postcode, " +
+                               " Suburb " +
+                               " FROM JOB " +
+                               " WHERE Client_Id = @Client_Id";
             SqlParameter[] objparams = new SqlParameter[1];
             objparams[0] = new SqlParameter("@Client_Id", DbType.Int32) { Value = Client_Id };
             DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
             return Jobs;
         }
+
+       
         #endregion
 
         #region Priv Methods

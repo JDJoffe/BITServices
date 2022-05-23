@@ -13,17 +13,11 @@ namespace BitServicesWebApp
         {
 
         }
-
+        #region Neutral
         protected void loginLbtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
         }
-
-        protected void accJobLbtn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AllAcceptedJobs.aspx");
-        }
-
         protected void logoutLbtn_Click(object sender, EventArgs e)
         {
             Session.Remove("Client_Id");
@@ -37,15 +31,44 @@ namespace BitServicesWebApp
             //Session.Clear();
             Response.Redirect("Login.aspx");
         }
+        #endregion
 
+        #region Client
+        protected void cliJobLbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ClientJobs.aspx");
+        }
         protected void newJobLbtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("NewJob.aspx");
         }
+        #endregion
 
+        #region Coordinator
+        protected void asgJobbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AllAssignedJobs.aspx");
+        }
         protected void rejJobLbtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("RejectedJobs.aspx");
+            Response.Redirect("AllRejectedJobs.aspx");
         }
+        protected void comJobLbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AllCompletedJobs.aspx");
+        }
+        #endregion
+
+        #region Contractor
+        protected void conJobLbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ContractorJobs.aspx");
+        }
+        protected void accJobLbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AcceptedJobs.aspx");
+        }
+        #endregion
+
     }
 }

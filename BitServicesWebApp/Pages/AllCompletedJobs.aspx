@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    <img width="150px" src="../Images/book-online.jpg" />
+                                    <img width="150px" src="../Images/book.png" />
                                 </center>
                             </div>
                         </div>
@@ -32,12 +32,7 @@
                                             <ItemTemplate>
                                                 <asp:Button ID="approveBtn" runat="server" Height="40px" Width="80px" Text="Accept" CommandName="Approve" CommandArgument="<%#Container.DataItemIndex %>" />
                                             </ItemTemplate>
-                                        </asp:TemplateField>
-                                          <asp:TemplateField HeaderText="Reject Action">
-                                            <ItemTemplate>
-                                                <asp:Button ID="rejectBtn" runat="server" Height="40px" Width="80px" Text="Reject" CommandName="Reject" CommandArgument="<%#Container.DataItemIndex %>" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
+                                        </asp:TemplateField>                                       
                                     </Columns>
                                 </asp:GridView>
                             </div>

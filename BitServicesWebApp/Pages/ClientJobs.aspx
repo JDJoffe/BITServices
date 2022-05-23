@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    <img width="150px" src="../Images/Book.png" />
+                                    <img width="150" src="../Images/Book.png" />
                                 </center>
                             </div>
                         </div>
@@ -26,7 +26,8 @@
                             <div class="col-12 mx-auto">
                                 <asp:GridView ID="gvJobs"
                                     CssClass="table table-striped table-bordered"
-                                    runat="server">
+                                    runat="server"
+                                    OnRowCommand="gvJobs_RowCommand">                                    
                                 </asp:GridView>
                             </div>
                         </div>

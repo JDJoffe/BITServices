@@ -65,6 +65,36 @@ namespace BitServicesWebApp.BLL
             DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
             return Jobs;
         }
+
+        public DataTable AllRejectedJobs()
+        {
+            string sql = "SELECT j.job_id, cl.Name, J.Priority, J.Skill, J.Description, CONVERT(date,j.Date) [Date], j.street, j.suburb, j.postcode " +
+            "FROM JOB j " +
+            "INNER JOIN CLIENT cl ON j.Client_Id = cl.Client_Id " +
+            "INNER JOIN CONTRACTOR co ON j.Contractor_Id = co.Contractor_Id " +
+            "INNER JOIN JOB_STATUS js ON j.Job_Id = js.Job_Id " +
+            "WHERE co.Contractor_Id = @Contractor_Id " +
+            "AND js.Status = 'Rejected'";
+            SqlParameter[] objparams = new SqlParameter[1];
+            objparams[0] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = Contractor_Id };
+            DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
+            return Jobs;
+        }
+
+        public DataTable AllCompletedJobs()
+        {
+            string sql = "SELECT j.job_id, cl.Name, J.Priority, J.Skill, J.Description, CONVERT(date,j.Date) [Date], j.street, j.suburb, j.postcode " +
+            "FROM JOB j " +
+            "INNER JOIN CLIENT cl ON j.Client_Id = cl.Client_Id " +
+            "INNER JOIN CONTRACTOR co ON j.Contractor_Id = co.Contractor_Id " +
+            "INNER JOIN JOB_STATUS js ON j.Job_Id = js.Job_Id " +
+            "WHERE co.Contractor_Id = @Contractor_Id " +
+            "AND js.Status IN ('Complete', 'PaymentPending')";
+            SqlParameter[] objparams = new SqlParameter[1];
+            objparams[0] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = Contractor_Id };
+            DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
+            return Jobs;
+        }
         public int AcceptJob(int Job_Id)
         {
             int returnVal = 0;
@@ -95,6 +125,16 @@ namespace BitServicesWebApp.BLL
             SqlParameter[] objparams = new SqlParameter[2];
             objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
             objparams[1] = new SqlParameter("@Distance", DbType.Int32) { Value = Distance };
+            returnVal = _Db.ExecuteNonQuery(sql, objparams);
+            return returnVal;
+        }
+        public int SubmitFeedback(int Job_Id, string feedback)
+        {
+            int returnVal = 0;
+            string sql = "INSERT INTO FEEDBACK (@Job_Id @Feedback) ";
+            SqlParameter[] objparams = new SqlParameter[2];
+            objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
+            objparams[1] = new SqlParameter("@Feedback", DbType.Int32) { Value = feedback };
             returnVal = _Db.ExecuteNonQuery(sql, objparams);
             return returnVal;
         }

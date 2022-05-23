@@ -63,8 +63,19 @@ namespace BitServicesWebApp.BLL
         #endregion
 
         #region Pub Methods
-       
 
+        public int ApproveJob()
+        {
+            string sql = "UPDATE JOB_STATUS SET status = 'PaymentPending' WHERE Job_Id = @Job_Id";
+            SqlParameter[] objparams = new SqlParameter[1];
+            objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
+            int returnVal = _db.ExecuteNonQuery(sql, objparams);
+            return returnVal; // payment status
+        }
+
+         
+
+       
 
         #endregion
     }

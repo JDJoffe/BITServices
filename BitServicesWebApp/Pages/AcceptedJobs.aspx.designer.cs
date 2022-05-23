@@ -11,25 +11,16 @@ namespace BitServicesWebApp.Pages
 {
 
 
-    public partial class AllRejectedJobs
+    public partial class AcceptedJobs
     {
 
         /// <summary>
-        /// gvRejectedJobs control.
+        /// gvAccJobs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvRejectedJobs;
-
-        /// <summary>
-        /// gvAvailableSessions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAvailableSessions;
+        protected global::System.Web.UI.WebControls.GridView gvAccJobs;
     }
 }

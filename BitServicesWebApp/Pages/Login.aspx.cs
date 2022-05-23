@@ -50,7 +50,7 @@ namespace BitServicesWebApp.Pages
                 Session.Add("Coordinator_Id", coo_Id);
                 // Session variable is added with the name : StaffId
                 // and the value of id gets set to CustomerId Session variable
-                Response.Redirect("CompletedJobs.aspx");
+                Response.Redirect("AllCompletedJobs.aspx");
             }
             else
             {

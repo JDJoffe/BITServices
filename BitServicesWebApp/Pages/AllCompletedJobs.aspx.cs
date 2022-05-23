@@ -13,7 +13,42 @@ namespace BitServicesWebApp.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
 
+
+                if (Session["Coordinator_Id"] != null)
+                {
+                    //Neutral
+                    LinkButton login = (LinkButton)Master.FindControl("loginLbtn");
+                    LinkButton logout = (LinkButton)Master.FindControl("logoutLbtn");
+                    //Client
+                    LinkButton cliJob = (LinkButton)Master.FindControl("cliJobLbtn");
+                    LinkButton newJob = (LinkButton)Master.FindControl("newJobLbtn");
+                    //Coordinator
+                    LinkButton assignedJobs = (LinkButton)Master.FindControl("asgJobLbtn");
+                    LinkButton rejectedJobs = (LinkButton)Master.FindControl("rejJobLbtn");
+                    LinkButton completedJobs = (LinkButton)Master.FindControl("comJobLbtn");
+                    //Contractor
+                    LinkButton conJobs = (LinkButton)Master.FindControl("conJobLbtn");
+                    LinkButton acceptedJobs = (LinkButton)Master.FindControl("accJobLbtn");
+                    login.Visible = false;
+                    logout.Visible = true;
+
+                    cliJob.Visible = false;
+                    newJob.Visible = false;
+
+                    assignedJobs.Visible = true;
+                    rejectedJobs.Visible = true;
+                    completedJobs.Visible = true;
+
+                    conJobs.Visible = false;
+                    acceptedJobs.Visible = false;
+                    gvCompletedJobs.DataBind();
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
         }
 
         protected void gvCompletedJobs_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -25,12 +60,9 @@ namespace BitServicesWebApp.Pages
             if (e.CommandName == "Approve")
             {
 
-               // Job.ApproveJob();
+                Job.ApproveJob();
             }
-            else if (e.CommandName == "Reject")
-            {
-              //  Job.RejectJob();
-            }
+           
             RefreshGrid();
         }
         private void RefreshGrid()

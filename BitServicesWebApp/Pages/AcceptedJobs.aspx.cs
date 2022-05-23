@@ -9,7 +9,7 @@ using BitServicesWebApp.BLL;
 
 namespace BitServicesWebApp.Pages
 {
-    public partial class AllAcceptedJobs : System.Web.UI.Page
+    public partial class AcceptedJobs : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,18 +18,31 @@ namespace BitServicesWebApp.Pages
 
                 if (Session["Contractor_Id"] != null)
                 {
+                    //Neutral
                     LinkButton login = (LinkButton)Master.FindControl("loginLbtn");
-                    LinkButton acceptedJobs = (LinkButton)Master.FindControl("accJobLbtn");
-                    LinkButton newJob = (LinkButton)Master.FindControl("newJobLbtn");
                     LinkButton logout = (LinkButton)Master.FindControl("logoutLbtn");
-                    LinkButton rejectedJobs = (LinkButton)Master.FindControl("rejJobLbtn");
+                    //Client
+                    LinkButton cliJob = (LinkButton)Master.FindControl("cliJobLbtn");
+                    LinkButton newJob = (LinkButton)Master.FindControl("newJobLbtn");
+                    //Coordinator
                     LinkButton assignedJobs = (LinkButton)Master.FindControl("asgJobLbtn");
+                    LinkButton rejectedJobs = (LinkButton)Master.FindControl("rejJobLbtn");
+                    LinkButton completedJobs = (LinkButton)Master.FindControl("comJobLbtn");
+                    //Contractor
+                    LinkButton conJobs = (LinkButton)Master.FindControl("conJobLbtn");
+                    LinkButton acceptedJobs = (LinkButton)Master.FindControl("accJobLbtn");
                     login.Visible = false;
-                    acceptedJobs.Visible = true;
-                      newJob.Visible = false;
                     logout.Visible = true;
-                    rejectedJobs.Visible = true;
-                    assignedJobs.Visible = true;
+
+                    cliJob.Visible = false;
+                    newJob.Visible = false;
+
+                    assignedJobs.Visible = false;
+                    rejectedJobs.Visible = false;
+                    completedJobs.Visible = false;
+
+                    conJobs.Visible = true;
+                    acceptedJobs.Visible = true;
                     Contractor currContractor = new Contractor();
                     currContractor.Contractor_Id = Convert.ToInt32(Session["Contractor_Id"].ToString());
                     gvAccJobs.DataSource = currContractor.AllAcceptedJobs().DefaultView;

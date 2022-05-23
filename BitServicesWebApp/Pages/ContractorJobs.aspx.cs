@@ -16,17 +16,32 @@ namespace BitServicesWebApp.Pages
             if (!IsPostBack)
 
                 if (Session["Contractor_Id"] != null)
-                {                   
+                {
+                    //Neutral
                     LinkButton login = (LinkButton)Master.FindControl("loginLbtn");
-                    LinkButton acceptedJobs = (LinkButton)Master.FindControl("accJobLbtn");
-                    // LinkButton newJob = (LinkButton)Master.FindControl("newJobLbtn");
                     LinkButton logout = (LinkButton)Master.FindControl("logoutLbtn");
-                    LinkButton rejectedJobs = (LinkButton)Master.FindControl("rejJobLbtn");                    
+                    //Client
+                    LinkButton cliJob = (LinkButton)Master.FindControl("cliJobLbtn");
+                    LinkButton newJob = (LinkButton)Master.FindControl("newJobLbtn");
+                    //Coordinator
+                    LinkButton assignedJobs = (LinkButton)Master.FindControl("asgJobLbtn");
+                    LinkButton rejectedJobs = (LinkButton)Master.FindControl("rejJobLbtn");
+                    LinkButton completedJobs = (LinkButton)Master.FindControl("comJobLbtn");
+                    //Contractor
+                    LinkButton conJobs = (LinkButton)Master.FindControl("conJobLbtn");
+                    LinkButton acceptedJobs = (LinkButton)Master.FindControl("accJobLbtn");
                     login.Visible = false;
-                    acceptedJobs.Visible = true;
-                    //  newJob.Visible = true;
                     logout.Visible = true;
-                    rejectedJobs.Visible = true;
+
+                    cliJob.Visible = false;
+                    newJob.Visible = false;
+
+                    assignedJobs.Visible = false;
+                    rejectedJobs.Visible = false;
+                    completedJobs.Visible = false;
+
+                    conJobs.Visible = true;
+                    acceptedJobs.Visible = true;
                     Contractor currContractor = new Contractor();
                     currContractor.Contractor_Id = Convert.ToInt32(Session["Contractor_Id"].ToString());
                     gvJobs.DataSource = currContractor.AllJobs().DefaultView;
@@ -45,7 +60,9 @@ namespace BitServicesWebApp.Pages
             currContractor.Contractor_Id = Convert.ToInt32(Session["Contractor_Id"].ToString());
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = gvJobs.Rows[rowIndex];
+
             int Job_Id = Convert.ToInt32(row.Cells[2].Text);
+
             if (e.CommandName == "Accept")
             {
 
