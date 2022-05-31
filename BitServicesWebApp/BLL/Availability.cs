@@ -9,23 +9,30 @@ using BitServicesWebApp.DAL;
 
 namespace BitServicesWebApp.BLL
 {
-    
+
 
     public class Availability
     {
         private SQLDAL _Db;
 
+        public int Contractor_Id { get; set; }
+        public DateTime Date { get; set; }
         public Availability()
         {
             _Db = new SQLDAL();
         }
-        //public DataTable CheckAvailability(DateTime date, string time, string suburb, string postcode)
-        //{
-
-        //    date.DayOfWeek
-        //    string sql = "SELECT contractor_id, weekday, start_time, end_time ";
-        //    return _Db.ExecuteSQL(sql);
-        //}
+       
+        public DataTable DateAvailability(DateTime date)
+        {
+           
+            string sql = "SELECT Contractor_Id, CONVERT(date,j.Date) [Date] " +
+                         "FROM AVAILABILITY " +
+                         " WHERE Date = @Date";
+            SqlParameter[] objparams = new SqlParameter[1];
+            objparams[0] = new SqlParameter("@Date", DbType.Int32) { Value = date };
+            DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
+            return Jobs;
+        }
 
     }
 }

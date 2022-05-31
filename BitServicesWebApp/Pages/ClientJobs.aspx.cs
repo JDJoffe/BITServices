@@ -53,18 +53,7 @@ namespace BitServicesWebApp.Pages
 
         protected void gvJobs_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            Client currClient = new Client();
-            currClient.Client_Id = Convert.ToInt32(Session["Client_Id"].ToString());
-            int rowIndex = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = gvJobs.Rows[rowIndex];
-            if (e.CommandName == "Submit")
-            {
-                // int.tryparse
-               string feedback = row.FindControl("feedBackTxt").ToString().Trim();
-                currClient.SubmitFeedback(Convert.ToInt32(row.Cells[2].Text), feedback);
-                gvJobs.DataSource = currClient.AllJobs().DefaultView;
-                gvJobs.DataBind();
-            }
+           
         }
     }
 }

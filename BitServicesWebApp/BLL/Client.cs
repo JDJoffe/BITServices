@@ -34,18 +34,19 @@ namespace BitServicesWebApp.BLL
 
         public DataTable AllJobs()
         {
-            string sql = "SELECT Job_Id, " +
-                               " CONVERT(CHAR(10),Date,103) Date, " +
-                               " CONVERT(CHAR(5),Start_Time,108) StartTime, " +
-                               " CONVERT(CHAR(5),End_Time,108) EndTime, " +
-                               " Priority, " +
-                               " Skill, " +
-                               " Description, " +
-                               " Street, " +
-                               " Postcode, " +
-                               " Suburb " +
-                               " FROM JOB " +
-                               " WHERE Client_Id = @Client_Id";
+            string sql = "SELECT j.Job_Id, " +
+                               " CONVERT(CHAR(10),j.Date,103) Date, " +                             
+                               " j.Priority, " +
+                               " j.Skill, " +
+                               " js.status, " +
+                               " j.Description, " +
+                               " j.Street, " +
+                               " j.Postcode, " +
+                               " j.Suburb " +
+                               " FROM JOB j " +
+                               " INNER JOIN JOB_STATUS js ON j.Job_Id = js.Job_Id " +
+                               " WHERE Client_Id = @Client_Id " +
+                               " AND js.status NOT IN ('Rejected')";
             SqlParameter[] objparams = new SqlParameter[1];
             objparams[0] = new SqlParameter("@Client_Id", DbType.Int32) { Value = Client_Id };
             DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
