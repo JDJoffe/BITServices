@@ -79,45 +79,63 @@ namespace BitServicesWebApp.BLL
             DataTable Jobs = _db.ExecuteSQL(sql, objparams);
             return Jobs;
         }
+
+        public DataTable ChkLocation()
+        {
+            string sql = "SELECT j.Contractor_Id, CONVERT(date,j.Date) [Date] " +
+                        "FROM JOB j " +
+                        " WHERE j.Date = @Date " +
+                        " AND j.Contractor_Id = @Contractor_Id";
+            SqlParameter[] objparams = new SqlParameter[1];
+            objparams[0] = new SqlParameter("@Date", DbType.Int32) { Value = Date };
+            objparams[1] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = Contractor_Id };
+            DataTable Jobs = _db.ExecuteSQL(sql, objparams);
+            return Jobs;
+        }
         public int InsertJobReq()
         {
-            if (ChkDoubleJob()!= null)
+
+
+            string sql = $"INSERT INTO JOB (Client_Id,Date,Priority,Description,Street,Suburb,Postcode) " +
+                          "VALUES (@Client_Id,@Date,@Priority,@Description,@Street,@Suburb,@Postcode) " +
+                          "EXEC usp_NewJobStatus 'Unassigned' ";
+            SqlParameter[] objparams = new SqlParameter[7];
+            objparams[0] = new SqlParameter("@Client_Id", DbType.Int32) { Value = Client_Id };
+            objparams[1] = new SqlParameter("@Date", DbType.Date) { Value = Date };
+            objparams[2] = new SqlParameter("@Priority", DbType.String) { Value = Priority };
+            objparams[3] = new SqlParameter("@Description", DbType.String) { Value = Description };
+            objparams[4] = new SqlParameter("@Street", DbType.String) { Value = Street };
+            objparams[5] = new SqlParameter("@Suburb", DbType.String) { Value = Suburb };
+            objparams[6] = new SqlParameter("@Postcode", DbType.String) { Value = Postcode };
+            int returnVal = _db.ExecuteNonQuery(sql, objparams);
+            return returnVal;
+
+
+        }
+
+        public int AssignContractor()
+        {
+            if (ChkDoubleJob() != null)
             {
                 return 0;
             }
-            
+
             Availability Avail = new Availability();
             if (Avail.DateAvailability(Date) != null)
             {
-
-                string sql = $"INSERT INTO JOB (Client_Id,Contractor_Id,Date,Priority,Skill,Description,Street,Suburb,Postcode) " +
-                              "VALUES   (@Client_Id,@Contractor_Id,@Date,@Priority,@Skill,@Description,@Street,@Suburb,@Postcode) ";
-                SqlParameter[] objparams = new SqlParameter[9];
-                objparams[0] = new SqlParameter("@Client_Id", DbType.Int32) { Value = Client_Id };
+                string sql = "UPDATE JOB j " +
+                             "SET j.Contractor_Id = @Contractor_Id, js.status = 'Assigned' " +
+                             "INNER JOIN JOB_STATUS js ON js.Job_Id = j.Job_Id " +
+                             "WHERE Job_Id = @Job_Id ";                             
+                SqlParameter[] objparams = new SqlParameter[2];
+                objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
                 objparams[1] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = Contractor_Id };
-                objparams[2] = new SqlParameter("@Date", DbType.Int32) { Value = Date };
-                objparams[3] = new SqlParameter("@Priority", DbType.Int32) { Value = Priority };
-                objparams[4] = new SqlParameter("@Skill", DbType.Int32) { Value = Skill };
-                objparams[5] = new SqlParameter("@Description", DbType.Int32) { Value = Description };
-                objparams[6] = new SqlParameter("@Street", DbType.Int32) { Value = Street };
-                objparams[7] = new SqlParameter("@Suburb", DbType.Int32) { Value = Suburb };
-                objparams[8] = new SqlParameter("@Postcode", DbType.Int32) { Value = Postcode };
                 int returnVal = _db.ExecuteNonQuery(sql, objparams);
                 return returnVal;
             }
             return 0;
-
-
         }
-        public int InsertJobStatus()
-        {
-            string sql = $"INSERT INTO JOB (Client_Id,Contractor_Id,Date,Priority,Skill,Description,Street,Suburb,Postcode) " +
-                             "VALUES   (@Client_Id,@Contractor_Id,@Date,@Priority,@Skill,@Description,@Street,@Suburb,@Postcode) ";
-            SqlParameter[] objparams = new SqlParameter[9];
-            objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
-            int returnVal = _db.ExecuteNonQuery(sql, objparams);
-            return returnVal;
-        }
+
 
 
         #endregion

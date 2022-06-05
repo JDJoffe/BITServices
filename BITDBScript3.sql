@@ -16,12 +16,6 @@ GO
 
 --	TABLES		--
 
-CREATE TABLE LOCATIONS (
-                Street NVARCHAR(30) NOT NULL,
-                Suburb NVARCHAR(30) NOT NULL,
-                Postcode NCHAR(4) NOT NULL,
-                CONSTRAINT Locations_pk PRIMARY KEY (Street, Suburb, Postcode)
-)
 
 CREATE TABLE SKILL (
                 Skill NVARCHAR(30) NOT NULL                
@@ -44,10 +38,7 @@ CREATE TABLE CLIENT (
                 Client_Id INT IDENTITY NOT NULL,
                 [Name] NVARCHAR(30) NOT NULL,
                 Phone NCHAR(10) NOT NULL,
-                Email NVARCHAR(255) NOT NULL, 
-				Street NVARCHAR(30) NOT NULL,
-                Suburb NVARCHAR(30) NOT NULL,
-                Postcode NCHAR(4) NOT NULL,
+                Email NVARCHAR(255) NOT NULL, 				
                 [Password] NVARCHAR(30) NOT NULL, 
 				IsActive BIT NOT NULL,
                 CONSTRAINT CLIENT_pk PRIMARY KEY (Client_Id)
@@ -65,7 +56,7 @@ CREATE TABLE CONTRACTOR (
                 CONSTRAINT CONTRACTOR_pk PRIMARY KEY (Contractor_Id)
 )
 
-CREATE TABLE SUBURB (
+CREATE TABLE LOCATIONS (
                 Postcode NCHAR(4) NOT NULL,
                 Suburb NVARCHAR(30) NOT NULL,
                 Contractor_Id INT NOT NULL,
@@ -111,17 +102,7 @@ CREATE TABLE CONTRACTOR_SKILL (
                 CONSTRAINT CONTRACTOR_SKILL_pk PRIMARY KEY (Skill, Contractor_Id)
 )
 
-ALTER TABLE CLIENT ADD CONSTRAINT Locations_CLIENT_fk
-FOREIGN KEY (Street, Suburb, Postcode)
-REFERENCES Locations (Street, Suburb, Postcode)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 
-ALTER TABLE JOB ADD CONSTRAINT Locations_JOB_fk
-FOREIGN KEY (Street, Suburb, Postcode)
-REFERENCES Locations (Street, Suburb, Postcode)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
 
 ALTER TABLE CONTRACTOR_SKILL ADD CONSTRAINT SKILL_CONTRACTOR_SKILL_fk
 FOREIGN KEY (Skill)
@@ -159,7 +140,7 @@ REFERENCES CONTRACTOR (Contractor_Id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 
-ALTER TABLE SUBURB ADD CONSTRAINT CONTRACTOR_SUBURB_fk
+ALTER TABLE LOCATIONS ADD CONSTRAINT CONTRACTOR_LOCATIONS_fk
 FOREIGN KEY (Contractor_Id)
 REFERENCES CONTRACTOR (Contractor_Id)
 ON DELETE NO ACTION
@@ -193,17 +174,6 @@ ALTER TABLE CONTRACTOR ADD CONSTRAINT CK_CONTRACTOR_Experience CHECK ([Experienc
 ALTER TABLE CLIENT ADD CONSTRAINT CK_CLIENT_Active CHECK (IsActive IN (1, 0));
 --	INSERTS		--
 SET DATEFORMAT DMY
-INSERT INTO [dbo].LOCATIONS (Street,Postcode,Suburb)
-VALUES
-('79 Ferguson St','2087','Forestville'),
-('22 Brighton St','2096','Curl Curl'),
-('33 Forest Way Rd','2085','Belrose'),
-('56 McIntosh Rd','2099','Narraweena'),
-('25 Pittwater Rd','2100','Brookvale'),
-('210 Wakehurst Pkwy','2100','Oxford Falls'),
-('88 Starkey St','2087','Killarney Heights'),
-('16 Harmston Ave','2086','Frenchs Forest');
-GO
 INSERT INTO [dbo].SKILL (Skill)
 VALUES
 ('C# Programmer'),
@@ -226,12 +196,12 @@ VALUES
 ('Holly','Stevens','0418354416','HollyS@BIT.com','Access',1,1),
 ('Mike','Showman','0493126945','MikeS@BIT.com','Access',0,1);
 GO
-INSERT INTO [dbo].CLIENT ([Name],Phone,Email,street,suburb,postcode,[Password],IsActive)
+INSERT INTO [dbo].CLIENT ([Name],Phone,Email,[Password],IsActive)
 VALUES
-('AllenInc','0483866959','AllenInc@Gmail.com','210 Wakehurst Pkwy','Oxford Falls','2100','Welcome',1),
-('Kortain','0493307195','Mike@Kortain.com','33 Forest Way Rd','Belrose','2085','Welcome',1),
-('KFC','0493503310','Chik@KFC.com','210 Wakehurst Pkwy','Oxford Falls','2100','Welcome',1),
-('WayneTech','0456647517','Bats@Wayne.com','88 Starkey St','Killarney Heights','2087','Welcome',1);
+('AllenInc','0483866959','AllenInc@Gmail.com','Welcome',1),
+('Kortain','0493307195','Mike@Kortain.com','Welcome',1),
+('KFC','0493503310','Chik@KFC.com','Welcome',1),
+('WayneTech','0456647517','Bats@Wayne.com','Welcome',1);
 GO
 INSERT INTO [dbo].CONTRACTOR (First_Name,Last_Name,Phone,Email,Experience,[Password],IsActive)
 VALUES
@@ -240,7 +210,7 @@ VALUES
 ('Gilbert','Godfrey','0452935930','GilbertG@Gmail.com','Advanced','Work',1),
 ('Edna','Mode','0420135564','EdnaM@Gmail.com','Expert','Work',1);
 GO
-INSERT INTO [dbo].SUBURB (Contractor_Id,Postcode,Suburb)
+INSERT INTO [dbo].LOCATIONS (Contractor_Id,Postcode,Suburb)
 VALUES
 
 (1,'2096','Freshwater'),
@@ -281,18 +251,18 @@ VALUES
 GO
 INSERT INTO [dbo].[AVAILABILITY] (Contractor_Id,[Date])
 VALUES
-(1,'23/05/2022'),
-(1,'24/05/2022'),
-(1,'25/05/2022'),
-(2,'23/05/2022'),
-(2,'26/05/2022'),
-(2,'27/05/2022'),
-(3,'24/05/2022'),
-(3,'25/05/2022'),
-(3,'28/05/2022'),
-(4,'24/05/2022'),
-(4,'26/05/2022'),
-(4,'28/05/2022');
+(1,'23/06/2022'),
+(1,'24/06/2022'),
+(1,'25/06/2022'),
+(2,'23/06/2022'),
+(2,'26/06/2022'),
+(2,'27/06/2022'),
+(3,'24/06/2022'),
+(3,'25/06/2022'),
+(3,'28/06/2022'),
+(4,'24/06/2022'),
+(4,'26/06/2022'),
+(4,'28/06/2022');
 GO
 INSERT INTO [dbo].CONTRACTOR_SKILL (Skill,Contractor_Id)
 VALUES

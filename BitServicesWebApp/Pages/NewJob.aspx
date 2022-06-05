@@ -53,22 +53,7 @@
                                 <div class="form-group">
                                     <asp:TextBox CssClass="form-control" ID="postCodeTxt" runat="server" placeholder="Postcode" />
                                 </div>
-                            </div>
-                            <div class="col-1">
-                                <label>State</label>
-                                <div class="form-group">
-                                    <asp:DropDownList CssClass="form-control" ID="stateDdl" runat="server">
-                                        <asp:ListItem Text="NSW" Value="NSW" />
-                                        <asp:ListItem Text="VIC" Value="VIC" />
-                                        <asp:ListItem Text="ACT" Value="ACT" />
-                                        <asp:ListItem Text="QLD" Value="QLD" />
-                                        <asp:ListItem Text="SA" Value="SA" />
-                                        <asp:ListItem Text="WA" Value="WA" />
-                                        <asp:ListItem Text="NT" Value="NT" />
-                                        <asp:ListItem Text="TAS" Value="TAS" />
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
+                            </div>                         
                             <div class="col-1">
                                 <label>Priority</label>
                                 <div class="form-group">
@@ -86,7 +71,14 @@
                             <div class="col-6">
                                 <label>Job Description</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="descriptionTxt" runat="server" placeholder="Description" Height="200" TextMode="MultiLine" />
+                                    <asp:TextBox CssClass="form-control" ID="descriptionTxt" runat="server" placeholder="Description" Height="150" TextMode="MultiLine" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mx-auto" >
+                                <div class="form-group">
+                                    <asp:Button CssClass="btn btn-success btn-block btn-lg" style="margin-left:43.5%" ID="submitBtn" runat="server" Height="40px" Width="120px" Text="Submit" OnClick="submitBtn_Click" />
                                 </div>
                             </div>
                         </div>

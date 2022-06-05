@@ -32,7 +32,7 @@ namespace BitServicesWebApp.BLL
         }
         #endregion
 
-        #region Pub Methods
+         #region Pub Methods
 
         public DataTable AllJobs()
         {
@@ -134,7 +134,7 @@ namespace BitServicesWebApp.BLL
             string sql = "INSERT INTO FEEDBACK (@Job_Id @Feedback) ";
             SqlParameter[] objparams = new SqlParameter[2];
             objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
-            objparams[1] = new SqlParameter("@Feedback", DbType.Int32) { Value = feedback };
+            objparams[1] = new SqlParameter("@Feedback", DbType.String) { Value = feedback };
             returnVal = _Db.ExecuteNonQuery(sql, objparams);
             return returnVal;
         }

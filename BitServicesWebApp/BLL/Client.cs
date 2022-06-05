@@ -36,8 +36,7 @@ namespace BitServicesWebApp.BLL
         {
             string sql = "SELECT j.Job_Id, " +
                                " CONVERT(CHAR(10),j.Date,103) Date, " +                             
-                               " j.Priority, " +
-                               " j.Skill, " +
+                               " j.Priority, " +                              
                                " js.status, " +
                                " j.Description, " +
                                " j.Street, " +
@@ -54,6 +53,7 @@ namespace BitServicesWebApp.BLL
         }
 
        
+
         #endregion
 
         #region Priv Methods
