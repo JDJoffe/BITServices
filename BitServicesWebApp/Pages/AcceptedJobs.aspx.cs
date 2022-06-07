@@ -43,10 +43,8 @@ namespace BitServicesWebApp.Pages
 
                     conJobs.Visible = true;
                     acceptedJobs.Visible = true;
-                    Contractor currContractor = new Contractor();
-                    currContractor.Contractor_Id = Convert.ToInt32(Session["Contractor_Id"].ToString());
-                    gvAccJobs.DataSource = currContractor.AllAcceptedJobs().DefaultView;
-                    gvAccJobs.DataBind();
+
+                    RefreshGrid();
                 }
                 else
                 {
@@ -60,14 +58,20 @@ namespace BitServicesWebApp.Pages
             currContractor.Contractor_Id = Convert.ToInt32(Session["Contractor_Id"].ToString());
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = gvAccJobs.Rows[rowIndex];
+            int distance = Convert.ToInt32(((TextBox)row.FindControl("distanceTxt")).Text.Trim());
+
             if (e.CommandName == "Complete")
-            {
-                // int.tryparse
-                int distance = Convert.ToInt32(((TextBox)row.FindControl("distanceTxt")).Text.Trim());
-                currContractor.CompleteJob(Convert.ToInt32(row.Cells[3].Text), distance);
-                gvAccJobs.DataSource = currContractor.AllAcceptedJobs().DefaultView;
-                gvAccJobs.DataBind();
+            {            
+                currContractor.CompleteJob(Convert.ToInt32(row.Cells[3].Text), distance);              
             }
+            RefreshGrid();
+        }
+        private void RefreshGrid()
+        {
+            Contractor currContractor = new Contractor();
+            currContractor.Contractor_Id = Convert.ToInt32(Session["Contractor_Id"].ToString());
+            gvAccJobs.DataSource = currContractor.AllAcceptedJobs().DefaultView;
+            gvAccJobs.DataBind();
         }
 
     }

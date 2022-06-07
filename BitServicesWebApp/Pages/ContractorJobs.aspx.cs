@@ -67,7 +67,7 @@ namespace BitServicesWebApp.Pages
             }
             else if (e.CommandName == "Reject")
             {
-                currContractor.RejectJob(Job_Id);
+                currContractor.RejectJob(Job_Id,currContractor.Contractor_Id);
             }
             RefreshGrid();
         }

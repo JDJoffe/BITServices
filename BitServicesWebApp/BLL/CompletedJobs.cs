@@ -18,7 +18,7 @@ namespace BitServicesWebApp.BLL
         }
         public DataTable AllCompletedJobs()
         {
-            string sql = "SELECT cl.Name, J.Priority, J.Skill, J.Description, CONVERT(date,j.Date) [Date], j.street, j.suburb, j.postcode " +
+            string sql = "SELECT cl.Name, co.first_name , J.Priority, J.Skill, J.Description, CONVERT(date,j.Date) [Date], j.street, j.suburb, j.postcode " +
             "FROM JOB j " +
             "INNER JOIN CLIENT cl ON j.Client_Id = cl.Client_Id " +
             "INNER JOIN CONTRACTOR co ON j.Contractor_Id = co.Contractor_Id " +

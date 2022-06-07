@@ -19,17 +19,11 @@ namespace BitServicesWebApp.BLL
         }
         public DataTable AllRejectedJobs()
         {
-            string sql = "select b.bookingId, c.firstname +' '+ c.lastname as [Customer Name]," +
-                " b.pickupaddress, b.suburb, b.postcode, b.state, " +
-                "i.firstname + ' ' + i.lastname [Instructor Name]," +
-                " a.availabledate, t.starttime " +
-                "FROM CUSTOMER c, BOOKING b, AVAILABILITY a, INSTRUCTOR i, timeslot t" +
-                " where b.availabilityId = a.availabilityId " +
-                "AND a.instructorID = i.instructorID " +
-                "AND c.customerId = b.customerId " +
-                "AND a.timeslotId = t.timeslotId " +
-                "AND b.bookingstatusId = 2 " +
-                "AND b.paymentstatusid = 1 ";
+            string sql = "SELECT cl.Name, co.first_name , J.Priority, J.Skill, J.Description, CONVERT(date,j.Date) [Date], j.street, j.suburb, j.postcode " +
+                         "FROM JOB j " +
+                         "INNER JOIN CLIENT cl ON j.Client_Id = cl.Client_Id " +
+                         "INNER JOIN CONTRACTOR co ON j.Contractor_Id = co.Contractor_Id " +
+                         "WHERE j.status = 'Rejected' ";
             DataTable jobs = _Db.ExecuteSQL(sql);
             return jobs;
         }

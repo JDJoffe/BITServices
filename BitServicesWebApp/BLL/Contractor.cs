@@ -100,12 +100,15 @@ namespace BitServicesWebApp.BLL
             return returnVal;
         }
 
-        public int RejectJob(int Job_Id)
+        public int RejectJob(int Job_Id, int Contractor_Id)
         {
             int returnVal = 0;
-            string sql = "UPDATE JOB SET status = 'Rejected' WHERE Job_Id = @Job_Id";
+            string sql = "UPDATE JOB SET status = 'Rejected' WHERE Job_Id = @Job_Id " +
+                         "INSERT INTO HISTORY (Job_Id, Contractor_Id) VALUES (@Job_Id, @Contractor_Id) ";
+
             SqlParameter[] objparams = new SqlParameter[1];
             objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
+            objparams[1] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = Contractor_Id };
             returnVal = _Db.ExecuteNonQuery(sql, objparams);
             return returnVal;
         }
