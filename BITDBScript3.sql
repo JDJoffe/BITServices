@@ -5,7 +5,13 @@ IF EXISTS	(	SELECT	name
 	    		FROM	master..sysdatabases
 				WHERE	name = 'BIT_Services'
 			)
-DROP PROCEDURE IF EXISTS dbo.usp_NewJobStatus
+DROP PROCEDURE IF EXISTS dbo.usp_ChkLocation
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_usp_ChkSkill 
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_ChkDateAvailable
+GO
+DROP PROCEDURE IF EXISTS dbo.usp_ChkDoubleJob
 GO
 DROP DATABASE BIT_Services;
 GO
@@ -70,6 +76,7 @@ CREATE TABLE JOB (
                 [Date] DATE NOT NULL,               
                 [Priority] NCHAR(12) NOT NULL,
                 Skill NVARCHAR(30),
+				[Status] NVARCHAR(14) NOT NULL,
 				Distance INT,
                 Street NVARCHAR(30) NOT NULL,
                 Suburb NVARCHAR(30) NOT NULL,
@@ -78,14 +85,8 @@ CREATE TABLE JOB (
                 CONSTRAINT JOB_pk PRIMARY KEY (Job_Id)
 )
 
-CREATE TABLE JOB_STATUS (
-                Job_Id INT NOT NULL,
-                [Status] NVARCHAR(14) NOT NULL,
-                CONSTRAINT JOB_STATUS_pk PRIMARY KEY (Job_Id)
-)
-
 CREATE TABLE FEEDBACK (
-                Job_Id INT NOT NULL,
+                Job_Id INT NOT NULL,				
                 Feedback NVARCHAR(255) NOT NULL,
                 CONSTRAINT FEEDBACK_pk PRIMARY KEY (Job_Id)
 )
@@ -152,16 +153,10 @@ REFERENCES JOB (Job_Id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 
-ALTER TABLE JOB_STATUS ADD CONSTRAINT JOB_JOB_STATUS_fk
-FOREIGN KEY (Job_Id)
-REFERENCES JOB (Job_Id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
-
 --	Delimits	--
-ALTER TABLE JOB ADD CONSTRAINT CK_JOB CHECK ([Priority] IN ('Low','Medium','High','Urgent'));
+ALTER TABLE JOB ADD CONSTRAINT CK_JOB_Priority CHECK ([Priority] IN ('Low','Medium','High','Urgent'));
 
-ALTER TABLE JOB_STATUS ADD CONSTRAINT CK_JOB_STATUS CHECK ([Status] IN ('Unassigned','Assigned', 'Accepted', 'Complete', 'PaymentPending', 'Rejected'));
+ALTER TABLE JOB ADD CONSTRAINT CK_JOB_Status CHECK ([Status] IN ('Unassigned','Assigned', 'Accepted', 'Complete', 'PaymentPending', 'Rejected'));
 
 ALTER TABLE COORDINATOR ADD CONSTRAINT CK_COORDINATOR_Active CHECK (IsActive IN (1, 0));
 
@@ -226,21 +221,13 @@ VALUES
 (4,'2087','Forestville'),
 (4,'2086','Frenchs Forest');
 GO
-INSERT INTO [dbo].JOB (Client_Id,Contractor_Id,[Date],[Priority],Skill,Distance,street,suburb,postcode,[Description])
+INSERT INTO [dbo].JOB (Client_Id,Contractor_Id,[Date],[Priority],Skill,[Status],Distance,street,suburb,postcode,[Description])
 VALUES
-(4,4,'24/05/2022','Urgent','Network Administrator',1,'88 Starkey St','Killarney Heights','2087','An issue has happend in our network'),
-(4,4,'28/06/2018','Urgent','SQL Server Administrator',5,'16 Harmston Ave','Frenchs Forest','2086','An issue has happend in our network'),
-(1,4,'28/05/2022','High','Windows Server Administrator',4,'79 Ferguson St','Forestville','2087','Issues with windows server stopping printers from working'),
-(2,3,'24/05/2022','Medium','Systems Architect',3,'33 Forest Way Rd','Belrose','2085','Need help with our system'),
-(3,2,'26/05/2022','Low','HTML/CSS Developer',6,'210 Wakehurst Pkwy','Oxford Falls','2100','Website has bugs with layout');
-GO
-INSERT INTO [dbo].JOB_STATUS (Job_Id,[STATUS])
-VALUES
-(1,'Assigned'),
-(2,'PaymentPending'),
-(3,'PaymentPending'),
-(4,'PaymentPending'),
-(5,'Complete');
+(4,4,'24/05/2022','Urgent','Network Administrator','Assigned',1,'88 Starkey St','Killarney Heights','2087','An issue has happend in our network'),
+(4,4,'28/06/2018','Urgent','SQL Server Administrator','PaymentPending',5,'16 Harmston Ave','Frenchs Forest','2086','An issue has happend in our network'),
+(1,4,'28/05/2022','High','Windows Server Administrator','PaymentPending',4,'79 Ferguson St','Forestville','2087','Issues with windows server stopping printers from working'),
+(2,3,'24/05/2022','Medium','Systems Architect','PaymentPending',3,'33 Forest Way Rd','Belrose','2085','Need help with our system'),
+(3,2,'26/05/2022','Low','HTML/CSS Developer','Complete',6,'210 Wakehurst Pkwy','Oxford Falls','2100','Website has bugs with layout');
 GO
 INSERT INTO [dbo].FEEDBACK (Job_Id, Feedback)
 VALUES
@@ -282,16 +269,69 @@ VALUES
 ('Windows Server Administrator',4);
 GO
 --	STORED PROCS		--
-CREATE OR ALTER PROCEDURE usp_NewJobStatus
+CREATE OR ALTER PROCEDURE usp_ChkLocation 
 
-@Status NVARCHAR(14)
+@Suburb NVARCHAR(30),
+@Postcode NCHAR(4)
 
 AS
 BEGIN
 
-DECLARE @Job_Id INT = @@IDENTITY
-INSERT INTO JOB_STATUS (Job_Id,[Status])
-VALUES (@Job_Id,@Status);
+SELECT c.Contractor_Id
+FROM CONTRACTOR c
+INNER JOIN LOCATIONS l ON c.Contractor_Id = l.Contractor_Id 
+WHERE(@Suburb)  IN(l.Suburb) 
+AND(@Postcode) IN(l.postcode)
 
 END
 GO
+
+CREATE OR ALTER PROCEDURE usp_ChkSkill 
+
+@Skill NVARCHAR(30)
+
+AS
+BEGIN
+
+SELECT cs.Contractor_Id
+FROM CONTRACTOR_SKILL cs					
+WHERE cs.Skill = @Skill					
+				
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_ChkDateAvailable 
+
+@Date DATE
+
+AS
+BEGIN
+
+SELECT a.Contractor_Id
+FROM [AVAILABILITY] a					
+WHERE a.[Date] = @Date
+
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_ChkDoubleJob
+
+@Date DATE,
+@Contractor_Id INT
+
+AS
+BEGIN
+
+DECLARE @Result NVARCHAR(11)
+IF EXISTS	(
+				SELECT j.Contractor_Id, CONVERT(DATE,j.[Date]) [Date] 
+				FROM JOB j
+				WHERE j.[Date] = @Date 
+				AND j.Contractor_Id = @Contractor_Id
+			)
+			SET @Result = 'Unavailable'
+		ELSE
+			SET @Result = 'Available'
+END
+GO
+

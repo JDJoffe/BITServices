@@ -39,12 +39,7 @@
                                             <ItemTemplate>
                                                 <asp:Button ID="rejectBtn" runat="server" Height="40px" Width="80px" Text="Reject" CommandName="Reject" CommandArgument="<%#Container.DataItemIndex %>" />
                                             </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText ="Feedback">
-                                            <ItemTemplate>
-                                                <asp:TextBox ID="feedBackTxt" runat="server" Height="40px" Width="200px" Text="" CommandName="Submit" CommandArgument="<%#Container.DataItemIndex %>" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
+                                        </asp:TemplateField>                                     
                                     </Columns>
                                 </asp:GridView>
                             </div>

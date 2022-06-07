@@ -64,7 +64,7 @@ namespace BitServicesWebApp.Pages
             {
                 // int.tryparse
                 int distance = Convert.ToInt32(((TextBox)row.FindControl("distanceTxt")).Text.Trim());
-                currContractor.CompleteJob(Convert.ToInt32(row.Cells[2].Text), distance);
+                currContractor.CompleteJob(Convert.ToInt32(row.Cells[3].Text), distance);
                 gvAccJobs.DataSource = currContractor.AllAcceptedJobs().DefaultView;
                 gvAccJobs.DataBind();
             }

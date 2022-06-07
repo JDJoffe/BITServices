@@ -47,7 +47,7 @@ namespace BitServicesWebApp
         #region Coordinator
         protected void asgJobbtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AllAssignedJobs.aspx");
+            Response.Redirect("AllUnassignedJobs.aspx");
         }
         protected void rejJobLbtn_Click(object sender, EventArgs e)
         {

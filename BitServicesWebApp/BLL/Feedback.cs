@@ -23,7 +23,6 @@ namespace BitServicesWebApp.BLL
         public Feedback(DataRow dr)
         {
             Job_Id = Convert.ToInt32(dr["Job_Id"].ToString());
-            FeedBack_Id = Convert.ToInt32(dr["FeedBack_Id"].ToString());
             FeedBack = dr["FeedBack"].ToString();
         }
        

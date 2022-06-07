@@ -230,8 +230,8 @@
     <Content Include="Images\tech.jpg" />
     <Content Include="Pages\About.aspx" />
     <Content Include="Pages\AcceptedJobs.aspx" />
-    <Content Include="Pages\AllAssignedJobs.aspx" />
     <Content Include="Pages\AllRejectedJobs.aspx" />
+    <Content Include="Pages\AllUnassignedJobs.aspx" />
     <Content Include="Pages\ClientJobs.aspx" />
     <Content Include="Pages\AllCompletedJobs.aspx" />
     <Content Include="Pages\Contact.aspx" />
@@ -276,7 +276,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BLL\AssignedJobs.cs" />
+    <Compile Include="BLL\UnassignedJobs.cs" />
     <Compile Include="BLL\Availability.cs" />
     <Compile Include="BLL\Client.cs" />
     <Compile Include="BLL\CompletedJobs.cs" />
@@ -303,19 +303,19 @@
     <Compile Include="Pages\AcceptedJobs.aspx.designer.cs">
       <DependentUpon>AcceptedJobs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AllAssignedJobs.aspx.cs">
-      <DependentUpon>AllAssignedJobs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\AllAssignedJobs.aspx.designer.cs">
-      <DependentUpon>AllAssignedJobs.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AllRejectedJobs.aspx.cs">
       <DependentUpon>AllRejectedJobs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\AllRejectedJobs.aspx.designer.cs">
       <DependentUpon>AllRejectedJobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AllUnassignedJobs.aspx.cs">
+      <DependentUpon>AllUnassignedJobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AllUnassignedJobs.aspx.designer.cs">
+      <DependentUpon>AllUnassignedJobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ClientJobs.aspx.cs">
       <DependentUpon>ClientJobs.aspx</DependentUpon>

@@ -67,7 +67,7 @@
                         <%-- Coordinator --%> 
                         <li class="nav-item active">
                             <asp:LinkButton CssClass="nav-link" ID="asgJobLbtn" runat="server" Visible="false" OnClick="asgJobbtn_Click" Style="font-weight: bold">
-                              All Assigned Jobs
+                              All Unassigned Jobs
                             </asp:LinkButton>
                         </li>
                         <li class="nav-item active">

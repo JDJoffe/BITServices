@@ -9,7 +9,7 @@ using BitServicesWebApp.BLL;
 
 namespace BitServicesWebApp.Pages
 {
-    public partial class AllAssignedJobs : System.Web.UI.Page
+    public partial class AllUnassignedJobs : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,22 +44,22 @@ namespace BitServicesWebApp.Pages
                     conJobs.Visible = false;
                     acceptedJobs.Visible = false;
                     RefreshGrid();
-                 }
+                }
                 else
                 {
                     Response.Redirect("Login.aspx");
                 }
         }
 
-        protected void gvAssignedJobs_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvUnassignedJobs_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
         }
         private void RefreshGrid()
         {
-            AssignedJobs AllAssignedJobs = new AssignedJobs();
-            gvAssignedJobs.DataSource = AllAssignedJobs.AllAssignedJobs();
-            gvAssignedJobs.DataBind();
+            UnassignedJobs AllUnassignedJobs = new UnassignedJobs();
+            gvUnassignedJobs.DataSource = AllUnassignedJobs.AllUnassignedJobs();
+            gvUnassignedJobs.DataBind();
         }
     }
 }
