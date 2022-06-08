@@ -69,11 +69,11 @@ namespace BitServicesWebApp.BLL
         public int SetJobSkill()
         {
             string sql = "UPDATE JOB SET skill = @skill WHERE Job_Id = @Job_Id";
-                 SqlParameter[] objparams = new SqlParameter[2];
+            SqlParameter[] objparams = new SqlParameter[2];
             objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
             objparams[1] = new SqlParameter("@skill", DbType.String) { Value = Skill };
             int returnVal = _db.ExecuteNonQuery(sql, objparams);
-            return returnVal; 
+            return returnVal;
         }
         public DataTable ChkDoubleJob()
         {
@@ -101,39 +101,11 @@ namespace BitServicesWebApp.BLL
             DataTable Contractors = _db.ExecuteSQL(sql, objparams);
             return Contractors;
         }
-        public DataTable ChkExperience()
-        {
-            string sql = string.Empty;
-            switch (Priority)
-            {
-                case  "Urgent":
-                     sql = "SELECT c.contractor_Id " +
-                   "FROM CONTRACTOR c " +
-                   "WHERE c.Experience IN ('Expert') ";
-                    break;
-                case "High":
-                     sql = "SELECT c.contractor_Id " +
-                   "FROM CONTRACTOR c " +
-                   "WHERE c.Experience IN ('Expert','Advanced') ";
-                    break;
-                case "Medium":
-                     sql = "SELECT c.contractor_Id " +
-                   "FROM CONTRACTOR c " +
-                   "WHERE c.Experience IN ('Expert','Advanced','Intermediate') ";
-                    break;
-                case "Low":
-                     sql = "SELECT c.contractor_Id " +
-                   "FROM CONTRACTOR c " +
-                   "WHERE c.Experience IN ('Expert','Advanced','Intermediate','Beginner') ";
-                    break;                          
-            }           
-            DataTable Contractors = _db.ExecuteSQL(sql);
-            return Contractors;
-        }
+       
         public int InsertJobReq()
         {
             string sql = $"INSERT INTO JOB (Client_Id,Date,Priority,Status,Description,Street,Suburb,Postcode) " +
-                          "VALUES (@Client_Id,@Date,@Priority,'Unassigned',@Description,@Street,@Suburb,@Postcode) ";                        
+                          "VALUES (@Client_Id,@Date,@Priority,'Unassigned',@Description,@Street,@Suburb,@Postcode) ";
             SqlParameter[] objparams = new SqlParameter[7];
             objparams[0] = new SqlParameter("@Client_Id", DbType.Int32) { Value = Client_Id };
             objparams[1] = new SqlParameter("@Date", DbType.Date) { Value = Date };
@@ -146,6 +118,80 @@ namespace BitServicesWebApp.BLL
             return returnVal;
 
 
+        }
+
+        private string ChkExperience(string Priority)
+        {
+            string sql = string.Empty;
+            switch (Priority)
+            {
+                case "Urgent":
+                    sql = "AND c.Experience IN ('Expert') ";
+                    break;
+                case "High":
+                    sql = "AND c.Experience IN ('Expert','Advanced') ";
+                    break;
+                case "Medium":
+                    sql = "AND c.Experience IN ('Expert','Advanced','Intermediate') ";
+                    break;
+                case "Low":
+                    sql = "AND c.Experience IN ('Expert','Advanced','Intermediate','Beginner') ";
+                    break;
+            }
+            return sql;
+            // DataTable Contractors = _db.ExecuteSQL(sql);
+            // return Contractors;
+        }
+        public DataTable SuitableForJob()
+        {
+            string sql = "SELECT c.Contractor_Id Contractor_Id" +
+                         "FROM Contractor c" +
+                         "INNER JOIN Locations l ON c.Contractor_Id = l.Contractor_Id" +
+                         "INNER JOIN CONTRACTOR_SKILL cs ON c.Contractor_Id = cs.Contractor_Id" +
+                         "INNER JOIN[AVAILABILITY] a ON c.Contractor_Id = a.Contractor_Id" +
+                         "WHERE(@Suburb)  IN(l.Suburb)" +
+                         "AND(@Postcode) IN(l.postcode)" +
+                         "AND cs.Skill = @Skill" +
+                         "AND a.[Date] = @Date " +
+                         $"{ChkExperience(Priority)}";
+            SqlParameter[] objparams = new SqlParameter[5]; 
+            objparams[0] = new SqlParameter("@Suburb", DbType.String) { Value = Suburb };
+            objparams[1] = new SqlParameter("@Postcode", DbType.String) { Value = Postcode };
+            objparams[2] = new SqlParameter("@Skill", DbType.String) { Value = Skill };
+            objparams[3] = new SqlParameter("@Date", DbType.Date) { Value = Date };
+            objparams[4] = new SqlParameter("@Priority", DbType.String) { Value = Priority };
+            DataTable Contractors = _db.ExecuteSQL(sql, objparams);
+            return Contractors;
+        }
+        public DataTable FilterRejJobs(DataTable contractors)
+        {
+            foreach (DataRow dr in contractors.Rows)
+            {
+                int currcontractor = Convert.ToInt32(dr["Contractor_Id"].ToString());
+                DateTime Date = Convert.ToDateTime(dr["Date"].ToString());
+
+                string sql1 = "DECLARE @Result NVARCHAR(11) " +
+                                "EXEC usp_ChkDoubleJob @Date , @Contractor_Id, @Result OUTPUT; " +
+                                "PRINT @Result";
+                SqlParameter[] objparams1 = new SqlParameter[2];
+                objparams1[0] = new SqlParameter("@Date", DbType.Date) { Value = Date };
+                objparams1[1] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = currcontractor };
+                DataTable filtered = _db.ExecuteSQL(sql1, objparams1);
+                
+                if (true)
+                {
+
+                }
+            }
+
+            string sql = "SELECT Contractor_Id, CONVERT(date,j.Date) [Date] " +
+                         "FROM AVAILABILITY " +
+                         " WHERE Date = @Date";
+            SqlParameter[] objparams = new SqlParameter[1];
+            objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };
+            objparams[1] = new SqlParameter("@Date", DbType.Date) { Value = Date };
+            DataTable Jobs = _db.ExecuteSQL(sql, objparams);
+            return Jobs;
         }
 
         public int AssignContractor()
@@ -163,7 +209,7 @@ namespace BitServicesWebApp.BLL
             if (Avail.DateAvailability(Date) != null)
             {
                 string sql = "UPDATE JOB j " +
-                             "SET j.Contractor_Id = @Contractor_Id, j.status = 'Assigned' " +                            
+                             "SET j.Contractor_Id = @Contractor_Id, j.status = 'Assigned' " +
                              "WHERE Job_Id = @Job_Id ";
                 SqlParameter[] objparams = new SqlParameter[2];
                 objparams[0] = new SqlParameter("@Job_Id", DbType.Int32) { Value = Job_Id };

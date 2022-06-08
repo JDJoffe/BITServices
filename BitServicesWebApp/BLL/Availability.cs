@@ -16,15 +16,21 @@ namespace BitServicesWebApp.BLL
         private SQLDAL _Db;
 
         public int Contractor_Id { get; set; }
+        public int Job_Id { get; set; }
         public DateTime Date { get; set; }
+
         public Availability()
         {
             _Db = new SQLDAL();
         }
-       
-        public DataTable DateAvailability(DateTime date)
-        {
-           
+
+        public DataTable DateAvailability(DataTable contractors)
+        {     
+            foreach (DataRow dr in contractors.Rows)
+            {
+                
+            }
+
             string sql = "SELECT Contractor_Id, CONVERT(date,j.Date) [Date] " +
                          "FROM AVAILABILITY " +
                          " WHERE Date = @Date";

@@ -319,25 +319,25 @@ CREATE OR ALTER PROCEDURE usp_ChkDateAvailable
 
 AS
 BEGIN
-
+	
 SELECT a.Contractor_Id
 FROM [AVAILABILITY] a					
 WHERE a.[Date] = @Date
-
+			
 END
 GO
 
-CREATE OR ALTER PROCEDURE usp_ChkDoubleJob
+CREATE OR ALTER PROCEDURE usp_ChkDoubleJob 
 
 @Date DATE,
-@Contractor_Id INT
+@Contractor_Id INT,
+@Result NVARCHAR(11) OUTPUT
 
 AS
 BEGIN
 
-DECLARE @Result NVARCHAR(11)
 IF EXISTS	(
-				SELECT j.Contractor_Id, CONVERT(DATE,j.[Date]) [Date] 
+				SELECT j.Contractor_Id
 				FROM JOB j
 				WHERE j.[Date] = @Date 
 				AND j.Contractor_Id = @Contractor_Id
@@ -347,4 +347,3 @@ IF EXISTS	(
 			SET @Result = 'Available'
 END
 GO
-
