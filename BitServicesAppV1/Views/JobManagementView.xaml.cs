@@ -25,7 +25,7 @@ namespace BitServicesDesktopApp
         public JobManagementView()
         {
             InitializeComponent();
-            DataContext = new JobManagementViewModel();
+            this.DataContext = new JobManagementViewModel();
         }
     }
 }

@@ -103,7 +103,7 @@ namespace BitServicesWebApp.BLL
         public int RejectJob(int Job_Id, int Contractor_Id)
         {
             int returnVal = 0;
-            string sql = "UPDATE JOB SET status = 'Rejected' WHERE Job_Id = @Job_Id " +
+            string sql = "UPDATE JOB SET status = 'Unassigned' WHERE Job_Id = @Job_Id " +
                          "INSERT INTO HISTORY (Job_Id, Contractor_Id) VALUES (@Job_Id, @Contractor_Id) ";
 
             SqlParameter[] objparams = new SqlParameter[1];

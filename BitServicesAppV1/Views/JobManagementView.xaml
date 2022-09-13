@@ -40,11 +40,37 @@
                 </StackPanel>
             </Grid>
             <TabControl  Grid.Row="1" Background="#282828" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" >
-                <TabItem Header="Completed Jobs" Foreground="#539e8a" Background="#202020" BorderBrush="#202020" BorderThickness="0,0,0,.6">
-            <DataGrid Grid.Row="1" x:Name="completedJobsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TabItem Header="Unassigned Jobs" Foreground="#539e8a" Background="#202020" BorderBrush="#202020" BorderThickness="0,0,0,.6">
+                    <DataGrid Grid.Row="1" x:Name="unassignedJobsDg" Margin="5" Background="#202020"  HeadersVisibility="Column" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" ItemsSource="{Binding AllUnassignedJobs}" SelectedItem="{Binding SelectedJob}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="JobId" Binding="{Binding JobId}"/>
+                            <DataGridTextColumn Header="ClientName" Binding="{Binding ClientName}"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="Priority" Binding="{Binding Priority}"/>
+                            <DataGridTextColumn Header="Skill" Binding="{Binding Skill}"/>
+                            <DataGridTextColumn Header="Street" Binding="{Binding Street}"/>
+                            <DataGridTextColumn Header="Suburb" Binding="{Binding Suburb}"/>
+                            <DataGridTextColumn Header="Postcode" Binding="{Binding Postcode}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </TabItem>
-                <TabItem Header="Rejected Jobs" Foreground="#539e8a" Background="#202020" BorderBrush="#202020" BorderThickness="0,0,0,.6">
-                    <DataGrid Grid.Row="1" x:Name="rejectedJobsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
+                <TabItem Header="Completed Jobs" Foreground="#539e8a" Background="#202020" BorderBrush="#202020" BorderThickness="0,0,0,.6">
+                    <DataGrid Grid.Row="1" x:Name="completedJobsDg" Margin="5" Background="#202020"  HeadersVisibility="Column" BorderBrush="#ff8652" BorderThickness="0,0,0,.6" ItemsSource="{Binding AllCompletedJobs}" SelectedItem="{Binding SelectedJob}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="JobId" Binding="{Binding JobId}"/>
+                            <DataGridTextColumn Header="ClientName" Binding="{Binding ClientName}"/>
+                            <DataGridTextColumn Header="ContractorName" Binding="{Binding ContractorName}"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="Priority" Binding="{Binding Priority}"/>
+                            <DataGridTextColumn Header="Skill" Binding="{Binding Skill}"/>
+                            <DataGridTextColumn Header="Street" Binding="{Binding Street}"/>
+                            <DataGridTextColumn Header="Suburb" Binding="{Binding Suburb}"/>
+                            <DataGridTextColumn Header="Postcode" Binding="{Binding Postcode}"/>
+                            <DataGridTextColumn Header="Distance" Binding="{Binding Distance}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </TabItem>
             </TabControl>
             <Grid Grid.Row="2">

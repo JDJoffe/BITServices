@@ -35,7 +35,7 @@ namespace BitServicesWebApp.BLL
                          "FROM AVAILABILITY " +
                          " WHERE Date = @Date";
             SqlParameter[] objparams = new SqlParameter[1];
-            objparams[0] = new SqlParameter("@Date", DbType.Int32) { Value = date };
+            objparams[0] = new SqlParameter("@Date", DbType.Int32) { Value = Date };
             DataTable Jobs = _Db.ExecuteSQL(sql, objparams);
             return Jobs;
         }

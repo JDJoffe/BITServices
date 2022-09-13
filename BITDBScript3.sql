@@ -62,11 +62,11 @@ CREATE TABLE CONTRACTOR (
                 CONSTRAINT CONTRACTOR_pk PRIMARY KEY (Contractor_Id)
 )
 
-CREATE TABLE LOCATIONS (
+CREATE TABLE PREFFERED_LOCATIONS (
                 Postcode NCHAR(4) NOT NULL,
                 Suburb NVARCHAR(30) NOT NULL,
                 Contractor_Id INT NOT NULL,
-                CONSTRAINT SUBURB_pk PRIMARY KEY (Postcode, Suburb, Contractor_Id)
+                CONSTRAINT PREFFERED_LOCATIONS_pk PRIMARY KEY (Postcode, Suburb, Contractor_Id)
 )
 
 CREATE TABLE JOB (
@@ -75,7 +75,7 @@ CREATE TABLE JOB (
                 Contractor_Id INT,
                 [Date] DATE NOT NULL,               
                 [Priority] NCHAR(12) NOT NULL,
-                Skill NVARCHAR(30),
+                Skill NVARCHAR(30) NOT NULL,
 				[Status] NVARCHAR(14) NOT NULL,
 				Distance INT,
                 Street NVARCHAR(30) NOT NULL,
@@ -154,7 +154,7 @@ REFERENCES CONTRACTOR (Contractor_Id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 
-ALTER TABLE LOCATIONS ADD CONSTRAINT CONTRACTOR_LOCATIONS_fk
+ALTER TABLE PREFFERED_LOCATIONS ADD CONSTRAINT CONTRACTOR_PREFFERED_LOCATIONS_fk
 FOREIGN KEY (Contractor_Id)
 REFERENCES CONTRACTOR (Contractor_Id)
 ON DELETE NO ACTION
@@ -218,7 +218,7 @@ VALUES
 ('Gilbert','Godfrey','0452935930','GilbertG@Gmail.com','Advanced','Work',1),
 ('Edna','Mode','0420135564','EdnaM@Gmail.com','Expert','Work',1);
 GO
-INSERT INTO [dbo].LOCATIONS (Contractor_Id,Postcode,Suburb)
+INSERT INTO [dbo].PREFFERED_LOCATIONS (Contractor_Id,Postcode,Suburb)
 VALUES
 
 (1,'2096','Freshwater'),
@@ -236,7 +236,7 @@ VALUES
 GO
 INSERT INTO [dbo].JOB (Client_Id,Contractor_Id,[Date],[Priority],Skill,[Status],Distance,street,suburb,postcode,[Description])
 VALUES
-(4,4,'24/05/2022','Urgent','Network Administrator','Assigned',1,'88 Starkey St','Killarney Heights','2087','An issue has happend in our network'),
+(4,NULL,'24/05/2022','Urgent','Network Administrator','Unassigned',1,'88 Starkey St','Killarney Heights','2087','An issue has happend in our network'),
 (4,4,'28/06/2018','Urgent','SQL Server Administrator','PaymentPending',5,'16 Harmston Ave','Frenchs Forest','2086','An issue has happend in our network'),
 (1,4,'28/05/2022','High','Windows Server Administrator','PaymentPending',4,'79 Ferguson St','Forestville','2087','Issues with windows server stopping printers from working'),
 (2,3,'24/05/2022','Medium','Systems Architect','PaymentPending',3,'33 Forest Way Rd','Belrose','2085','Need help with our system'),
@@ -282,7 +282,7 @@ VALUES
 ('Windows Server Administrator',4);
 GO
 --	STORED PROCS		--
-CREATE OR ALTER PROCEDURE usp_ChkLocation 
+CREATE OR ALTER PROCEDURE usp_ChkPrefLocation 
 
 @Suburb NVARCHAR(30),
 @Postcode NCHAR(4)

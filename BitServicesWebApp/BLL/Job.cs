@@ -176,11 +176,11 @@ namespace BitServicesWebApp.BLL
                 SqlParameter[] objparams1 = new SqlParameter[2];
                 objparams1[0] = new SqlParameter("@Date", DbType.Date) { Value = Date };
                 objparams1[1] = new SqlParameter("@Contractor_Id", DbType.Int32) { Value = currcontractor };
-                DataTable filtered = _db.ExecuteSQL(sql1, objparams1);
+                var filtered = _db.ExecuteSQLScalar(sql1, objparams1);
                 
-                if (true)
+                if (filtered.ToString() == "Unavailable")
                 {
-
+                    contractors.Rows.Remove(dr);
                 }
             }
 
@@ -194,7 +194,7 @@ namespace BitServicesWebApp.BLL
             return Jobs;
         }
 
-        public int AssignContractor()
+        public int AssignContractor(DataTable contractors)
         {
             //bruh just make stored procs and call in query below bruh
             if (ChkDoubleJob().Rows.Count > 0)
@@ -206,7 +206,7 @@ namespace BitServicesWebApp.BLL
                 return 0;
             }
             Availability Avail = new Availability();
-            if (Avail.DateAvailability(Date) != null)
+            if (Avail.DateAvailability(contractors) != null)
             {
                 string sql = "UPDATE JOB j " +
                              "SET j.Contractor_Id = @Contractor_Id, j.status = 'Assigned' " +

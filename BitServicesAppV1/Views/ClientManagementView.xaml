@@ -39,23 +39,16 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="3*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <DataGrid Grid.RowSpan="2" x:Name="ClientsDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                <DataGrid Grid.Row="0" Grid.Column="1" x:Name="cliLocationDg" Margin="5" Background="#202020"  HeadersVisibility="Row" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"
-                          ItemsSource="{Binding ClientLocation}" SelectedItem="{Binding SelectedLocation}">
+
+                <DataGrid Grid.RowSpan="2" x:Name="ClientsDg" Margin="5" Background="#202020"  HeadersVisibility="Column" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"  
+                    AutoGenerateColumns="False" ItemsSource="{Binding AllClients}" SelectedItem="{Binding SelectedClient}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Phone" Binding="{Binding Phone}"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                        <DataGridTextColumn Header="IsActive" Binding="{Binding IsActive}"/>
+                    </DataGrid.Columns>
                 </DataGrid>
-                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                    <TextBox Text="{Binding Client.Location}" x:Name="addLocationTxt" Width="80" Margin="5" Foreground="#539e8a" Background="#202020" BorderBrush="#ff8652" BorderThickness="0,0,0,.6"/>
-                    <Button x:Name="removeLocationBtn" Width="80" Content="REMOVE" Margin="5" Foreground="#ff8652" Background="#202020" FontSize="18" FontWeight="Bold" Height="50" BorderBrush="#282828" Command="{Binding RemoveLocationCommand}"/>
-                    <Button x:Name="addLocationBtn" Width="55" Content="ADD" Margin="5" Foreground="#539e8a" Background="#202020" FontSize="18" FontWeight="Bold" Height="50" BorderBrush="#282828" Command="{Binding AddLocationCommand}"/>
-                </StackPanel>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
